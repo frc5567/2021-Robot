@@ -54,10 +54,22 @@ public class Drivetrain {
     }
 
     /**
+     * This function set sthe motors into "arcade drive", which means the pilot controls the speed of the robot with the 
+     * triggers and the direction of the robot with the x axis on the left joystick
+     * @param velocityInput
+     * @param turnInput
+     */
+    public void arcadeDrive(double velocityInput, double turnInput){
+
+    }
+    
+    /**
      * This function sets the motors up to be used to drive like a tank. Meaning each side is contolled individually.
      * The slave motors will following the master motors that are on the same side of the robot
+     * @param leftInput
+     * @param rightInput
      */
-    public void tankDrive(){
+    public void tankDrive(double leftInput, double rightInput){
 
     }
 }
