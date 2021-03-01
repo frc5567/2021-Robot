@@ -27,4 +27,15 @@ public class RobotMap {
      * Magazine Constants
      */
     public static final int MAGAZINE_MOTOR_PORT = 26;
+
+     /**
+     * Pilot Controller Constants
+     */
+    public static final boolean DRIVETRAIN_HAS_TWO_SOLENOIDS = true;
+ 
+    public static final int DRIVE_CONTROLLER_PORT = 1;
+ 
+    public static final double DRIVE_DEFAULT_INPUT_SCALAR = 0.6;
+    public static final double PILOT_CONTROLLER_STICK_DEADBAND = 0.08;
+}
     
