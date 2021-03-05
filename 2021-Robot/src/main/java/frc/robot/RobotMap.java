@@ -1,11 +1,14 @@
+package frc.robot;
 /**
  * Constants for Variables needed throughout code
  */
 public class RobotMap {
     /**
+
      * Drivetrain Constants for motors
      */
     /** Motor ID Constants */
+
     public static final int MASTER_LEFT_FALCON_ID = 3;
     public static final int MASTER_RIGHT_FALCON_ID = 4;
     public static final int SLAVE_LEFT_FALCON_ID = 13;
@@ -32,6 +35,18 @@ public class RobotMap {
      * Intake Constants
      */
     public static final int INTAKE_VICTOR_ID = 16;
+
+    //the PWM port for the outer motor - this is on PWM to reduce CAN traffic
+    public static final int INTAKE_PWM_SPARK_PORT = 2;
+    public static final int INTAKE_INNER_MOTOR_PORT = 1;
+
+    //inversion for our intake motors
+    public static final boolean OUTER_INTAKE_INVERTED = true;
+    public static final boolean INNER_INTAKE_INVERTED = true;
+
+      //the ports for the intake position piston
+    public static final int INTAKE_POSITION_PISTON_FORWARD_PORT = 0;
+    public static final int INTAKE_POSITION_PISTON_REVERSE_PORT = 3;
 
     /**
      * Magazine Constants
@@ -82,4 +97,6 @@ public class RobotMap {
      */
     public static final int PCM_CAN_ID = 20;
 
+
 }
+
