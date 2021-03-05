@@ -3,12 +3,22 @@
  */
 public class RobotMap {
     /**
-     * Drive Train Constants
+     * Drivetrain Constants for motors
      */
+    /** Motor ID Constants */
     public static final int MASTER_LEFT_FALCON_ID = 3;
     public static final int MASTER_RIGHT_FALCON_ID = 4;
     public static final int SLAVE_LEFT_FALCON_ID = 13;
     public static final int SLAVE_RIGHT_FALCON_ID = 14;
+
+    /** Drivetrain Constants for double solenoids/pistons */
+    public static final int LEFT_SOLENOID_FORWARD_PORT = 4;
+    public static final int LEFT_SOLENOID_REVERSE_PORT = 5;
+    public static final int RIGHT_SOLENOID_FORWARD_PORT = 2;
+    public static final int RIGHT_SOLENOID_REVERSE_PORT = 1;
+
+    /** The timeout constant for the CTRE config methods in miliseconds */
+    public static final int TIMEOUT_MS = 30;
 
     /**
      * Launcher Constants
@@ -64,6 +74,12 @@ public class RobotMap {
 		public static final int ENABLE_INTAKE = 8;
 		public static final int DISABLE_INTAKE = 9;
 		public static final int DUMP_BALLS = 12;
-    }
-}
+    }   
+
     
+    /**
+     * General Constants
+     */
+    public static final int PCM_CAN_ID = 20;
+
+}
