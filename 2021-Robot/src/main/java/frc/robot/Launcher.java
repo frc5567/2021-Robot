@@ -9,7 +9,30 @@ import com.ctre.phoenix.motorcontrol.can.BaseMotorController;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
+import edu.wpi.first.wpilibj.Timer;
+
 public class Launcher{
+
+    public enum State{
+
+        kIdle("Idle"),
+
+        kSetup("Setup"),
+
+        kLaunch("Launch");
+
+        private String stateName;
+    
+        State(String stateName) {
+            this.stateName = stateName;
+        }
+    
+        public String toString() {
+            return this.stateName;
+        }
+    }
+        State m_state;
+    
 
     //Declare the motors used for Launcher
     private TalonSRX m_masterMotor;
@@ -29,6 +52,9 @@ public class Launcher{
         m_closeSlaveMotor = closeSlaveMotor;
         m_farSlaveMotor1 = farSlaveMotor1;
         m_farSlaveMotor2 = farSlaveMotor2;
+
+        m_state = State.kIdle;
+        SetState(State.kIdle);
     }
 
     /**
@@ -50,5 +76,24 @@ public class Launcher{
         m_closeSlaveMotor.follow(m_masterMotor, FollowerType.PercentOutput);
         m_farSlaveMotor1.follow(m_masterMotor, FollowerType.PercentOutput);
         m_farSlaveMotor2.follow(m_masterMotor, FollowerType.PercentOutput);
+    }
+
+    public void SetState(State state){
+
+        if(m_state == state) {
+            return;
+        }
+
+        m_state = state;
+
+        if(m_state == State.kIdle) {
+           SetSpeed(0.0);
+        }
+        else if (m_state == State.kSetup) {
+            SetSpeed(0.5);
+        }
+        else if (m_state == State.kLaunch){
+            SetSpeed(0.8);
+        }
     }
 }
