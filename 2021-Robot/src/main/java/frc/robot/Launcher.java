@@ -9,16 +9,14 @@ import com.ctre.phoenix.motorcontrol.can.BaseMotorController;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
-import edu.wpi.first.wpilibj.Timer;
-
 public class Launcher{
-
+    //Enum for the three Launcher states
     public enum State{
-
+        // Idle state for the Launcher
         kIdle("Idle"),
-
+        // Setup state for the Launcher
         kSetup("Setup"),
-
+        // Launch state for the Launcher
         kLaunch("Launch");
 
         private String stateName;
@@ -31,6 +29,7 @@ public class Launcher{
             return this.stateName;
         }
     }
+        //Declare the launcher state
         State m_state;
     
 
@@ -53,7 +52,7 @@ public class Launcher{
         m_farSlaveMotor1 = farSlaveMotor1;
         m_farSlaveMotor2 = farSlaveMotor2;
 
-        m_state = State.kIdle;
+        //Set the initial state to Idle
         SetState(State.kIdle);
     }
 
@@ -78,14 +77,18 @@ public class Launcher{
         m_farSlaveMotor2.follow(m_masterMotor, FollowerType.PercentOutput);
     }
 
+    /**
+     * Sets the Launcher state as specified and sets the motor dependent on that
+     */
     public void SetState(State state){
-
+        //Checks if we are already in the state
         if(m_state == state) {
             return;
         }
-
+        //Sets the input state to our state
         m_state = state;
 
+        //Checks which state we are in and sets motor speed for each state
         if(m_state == State.kIdle) {
            SetSpeed(0.0);
         }
