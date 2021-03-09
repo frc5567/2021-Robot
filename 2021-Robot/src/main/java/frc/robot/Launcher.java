@@ -10,6 +10,28 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 public class Launcher{
+    //Enum for the three Launcher states
+    public enum State{
+        // Idle state for the Launcher
+        kIdle("Idle"),
+        // Setup state for the Launcher
+        kSetup("Setup"),
+        // Launch state for the Launcher
+        kLaunch("Launch");
+
+        private String stateName;
+    
+        State(String stateName) {
+            this.stateName = stateName;
+        }
+    
+        public String toString() {
+            return this.stateName;
+        }
+    }
+        //Declare the launcher state
+        State m_state;
+    
 
     //Declare the motors used for Launcher
     private TalonSRX m_masterMotor;
@@ -29,6 +51,9 @@ public class Launcher{
         m_closeSlaveMotor = closeSlaveMotor;
         m_farSlaveMotor1 = farSlaveMotor1;
         m_farSlaveMotor2 = farSlaveMotor2;
+
+        //Set the initial state to Idle
+        SetState(State.kIdle);
     }
 
     /**
@@ -50,5 +75,28 @@ public class Launcher{
         m_closeSlaveMotor.follow(m_masterMotor, FollowerType.PercentOutput);
         m_farSlaveMotor1.follow(m_masterMotor, FollowerType.PercentOutput);
         m_farSlaveMotor2.follow(m_masterMotor, FollowerType.PercentOutput);
+    }
+
+    /**
+     * Sets the Launcher state as specified and sets the motor dependent on that
+     */
+    public void SetState(State state){
+        //Checks if we are already in the state
+        if(m_state == state) {
+            return;
+        }
+        //Sets the input state to our state
+        m_state = state;
+
+        //Checks which state we are in and sets motor speed for each state
+        if(m_state == State.kIdle) {
+           SetSpeed(0.0);
+        }
+        else if (m_state == State.kSetup) {
+            SetSpeed(0.5);
+        }
+        else if (m_state == State.kLaunch){
+            SetSpeed(0.8);
+        }
     }
 }

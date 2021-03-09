@@ -4,29 +4,24 @@ package frc.robot;
  */
 public class RobotMap {
     /**
-     * Controller Constants
-    */
 
-    /**The USB port for the drive controller */
-    public static final int DRIVE_CONTROLLER_PORT = 1;
-    
-    /**the deadband on our controller sticks, used to prevent drift*/
-    public static final double PILOT_CONTROLLER_STICK_DEADBAND = 0.08;
-
-    /**
-     * Drive Train Constants
+     * Drivetrain Constants for motors
      */
-
-     /** The default scalar for drive inputs - what we multiply input from drive controller by */
-    public static final double DRIVE_DEFAULT_INPUT_SCALAR = 0.6;
-
-    //Whether the drivetrain has two solenoids
-    public static final boolean DRIVETRAIN_HAS_TWO_SOLENOIDS = true;
+    /** Motor ID Constants */
 
     public static final int MASTER_LEFT_FALCON_ID = 3;
     public static final int MASTER_RIGHT_FALCON_ID = 4;
     public static final int SLAVE_LEFT_FALCON_ID = 13;
     public static final int SLAVE_RIGHT_FALCON_ID = 14;
+
+    /** Drivetrain Constants for double solenoids/pistons */
+    public static final int LEFT_SOLENOID_FORWARD_PORT = 4;
+    public static final int LEFT_SOLENOID_REVERSE_PORT = 5;
+    public static final int RIGHT_SOLENOID_FORWARD_PORT = 2;
+    public static final int RIGHT_SOLENOID_REVERSE_PORT = 1;
+
+    /** The timeout constant for the CTRE config methods in miliseconds */
+    public static final int TIMEOUT_MS = 30;
 
     /**
      * Launcher Constants
@@ -57,9 +52,51 @@ public class RobotMap {
      * Magazine Constants
      */
     public static final int MAGAZINE_MOTOR_PORT = 26;
+
+     /**
+     * Pilot Controller Constants
+     */
+    public static final boolean DRIVETRAIN_HAS_TWO_SOLENOIDS = true;
+ 
+    public static final int DRIVE_CONTROLLER_PORT = 1;
+ 
+    public static final double DRIVE_DEFAULT_INPUT_SCALAR = 0.6;
+    public static final double PILOT_CONTROLLER_STICK_DEADBAND = 0.08;
+
+    /**
+     * GamePad/CopilotController Constants
+     */
+    /**The USB port for the GamePad */
+    public static final int GAMEPAD_PORT = 2;
+
+    public static final double RPM_TO_UNITS_PER_100MS = 2048.0 / 600;
+
+    public static final double LAUNCHER_HOLDING_SPEED = 0.5;
+    public static final double MAGAZINE_LAUNCH_SPEED = 0.65;
+    public static final double MAGAZINE_DUMP_SPEED = -0.45;
+    public static final double MAGAZINE_INTAKE_SPEED = 0.65;
+
+    public static final double INNER_INTAKE_SPEED = 0.3;
+    public static final double OUTER_INTAKE_SPEED = 0.8;
+
+    /** A storage class to put all of the gamepad button IDs in the same spot */
+    static final class GAMEPAD_BUTTON_ID
+    {
+		public static final int MOVE_MAGAZINE_DOWN = 4;
+		public static final int MOVE_MAGAZINE_LAUNCH = 5;
+		public static final int LAUNCHER_AND_MAGAZINE = 7;
+		public static final int REV_LAUNCHER = 7;
+		public static final int ENABLE_INTAKE = 8;
+		public static final int DISABLE_INTAKE = 9;
+		public static final int DUMP_BALLS = 12;
+    }   
+
     
     /**
      * General Constants
      */
     public static final int PCM_CAN_ID = 20;
+
+
 }
+
