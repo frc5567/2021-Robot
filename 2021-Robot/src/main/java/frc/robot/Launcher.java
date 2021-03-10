@@ -33,7 +33,7 @@ public class Launcher{
         //Declare the launcher state
         State m_state;
 
-        //the encoder plugged into the master Talon
+        //Declare the encoder plugged into the master Talon
         SensorCollection m_encoder;
     
     //Declare the motors used for Launcher
@@ -58,12 +58,12 @@ public class Launcher{
         //Set the initial state to Idle
         setState(State.kIdle);
 
-        //run the config methods to set up velocity control
+        //Run the config method to set up velocity control
         configVelocityControl();
     }
 
     /**
-     * Vertical constuctor for instantiation
+     * Vertical consrtuctor for instantiation
      */
     public Launcher(){
         m_masterMotor = new TalonSRX(RobotMap.MASTER_LAUNCHER_ID);
@@ -120,64 +120,64 @@ public class Launcher{
         }
     }
     private void configVelocityControl() {
-        //config remote sensors
-        //sets the sensor to be a quad encoder, sets our feedback device to be that sensor
+        //Config remote sensors
+        //Sets the sensor to be a quad encoder, sets our feedback device to be that sensor
         m_masterMotor.configSelectedFeedbackSensor(TalonSRXFeedbackDevice.CTRE_MagEncoder_Relative, RobotMap.PID_PRIMARY_SLOT, RobotMap.LAUNCHER_CONFIG_TIMEOUT_MS);
 
-        //zero the encoders on every init
+        //Zero the encoders on every init
         zeroEncoder();
 
 
-        //this sets how often we pull data from our sensor
+        //This sets how often we pull data from our sensor
         m_masterMotor.setStatusFramePeriod(StatusFrame.Status_2_Feedback0, RobotMap.LAUNCHER_FEEDBACK_PERIOD_MS, RobotMap.LAUNCHER_CONFIG_TIMEOUT_MS);
 
-        //this configs the deadband for the PID output. Any output with an absolute value less than this will be treated as zero
+        //This configs the deadband for the PID output. Any output with an absolute value less than this will be treated as zero
         m_masterMotor.configNeutralDeadband(0, RobotMap.LAUNCHER_CONFIG_TIMEOUT_MS);
 
-        //this sets the peak output for our motor controller.
+        //This sets the peak output for our motor controller.
         m_masterMotor.configPeakOutputForward(RobotMap.LAUNCHER_PID_PEAK_OUTPUT, RobotMap.LAUNCHER_CONFIG_TIMEOUT_MS);
-        //this does the same thing but for the reverse direction
+        //This does the same thing but for the reverse direction
         m_masterMotor.configPeakOutputReverse(0, RobotMap.LAUNCHER_CONFIG_TIMEOUT_MS);
         
-        //sets the period of the velocity sample
-        //effectively this defines the amount of time used to calculate the velocity
+        //Sets the period of the velocity sample
+        //Effectively this defines the amount of time used to calculate the velocity
         m_masterMotor.configVelocityMeasurementPeriod(RobotMap.VELOCITY_MEASUREMENT_PERIOD, RobotMap.LAUNCHER_CONFIG_TIMEOUT_MS);
 
         //Sets the number of samples used in the rolling average for calculating velocity
         m_masterMotor.configVelocityMeasurementWindow(RobotMap.LAUNCHER_VELOCITY_MEASUREMENT_WINDOW, RobotMap.LAUNCHER_CONFIG_TIMEOUT_MS);
         
-        //set p, i, d, f values
-        //the zero is the PID slot, in this case it is zero for the primary PID
-        //the launcher has no auxillary or turning PID control
+        //Set p, i, d, f values
+        //The zero is the PID slot, in this case it is zero for the primary PID
+        //The launcher has no auxillary or turning PID control
         m_masterMotor.config_kP(RobotMap.PID_PRIMARY_SLOT, RobotMap.LAUNCHER_P);
         m_masterMotor.config_kI(RobotMap.PID_PRIMARY_SLOT, RobotMap.LAUNCHER_I);
         m_masterMotor.config_kD(RobotMap.PID_PRIMARY_SLOT, RobotMap.LAUNCHER_D);
         m_masterMotor.config_kF(RobotMap.PID_PRIMARY_SLOT, RobotMap.LAUNCHER_F);
 
-        //this sets the acceptable amount of Integral error, where if the absolute accumulated error exceeds this ammount, it resets to zero
-        //this is designed to prevent the PID from going crazy if we move too far from our target
+        //This sets the acceptable amount of Integral error, where if the absolute accumulated error exceeds this ammount, it resets to zero
+        //This is designed to prevent the PID from going crazy if we move too far from our target
         m_masterMotor.config_IntegralZone(RobotMap.PID_PRIMARY_SLOT, RobotMap.LAUNCHER_I_ZONE, RobotMap.LAUNCHER_CONFIG_TIMEOUT_MS);
 
-        //sets the max output of the motor specifically within closed loop control
+        //Sets the max output of the motor specifically within closed loop control
         m_masterMotor.configClosedLoopPeakOutput(RobotMap.PID_PRIMARY_SLOT, RobotMap.LAUNCHER_PID_PEAK_OUTPUT, RobotMap.LAUNCHER_CONFIG_TIMEOUT_MS);
 
-        //this configures an allowable error in closed loop control
-        //any error less than this is treated as zero.
+        //This configures an allowable error in closed loop control
+        //Any error less than this is treated as zero.
         m_masterMotor.configAllowableClosedloopError(RobotMap.PID_PRIMARY_SLOT, RobotMap.LAUNCHER_ACCEPTABLE_ERROR, RobotMap.LAUNCHER_CONFIG_TIMEOUT_MS);
 
-        //configures the period for closed loop calculations in MS 
-        //should be increased if the can bus is having issues
+        //Configures the period for closed loop calculations in MS 
+        //Should be increased if the can bus is having issues
         m_masterMotor.configClosedLoopPeriod(RobotMap.PID_PRIMARY_SLOT, RobotMap.LAUNCHER_CLOSED_LOOP_PERIOD_MS, RobotMap.LAUNCHER_CONFIG_TIMEOUT_MS);
 
-        //configures ramp speed
+        //Configures ramp speed
         m_masterMotor.configOpenloopRamp(RobotMap.LAUNCHER_OPEN_LOOP_RAMP_TIME_S);
         m_masterMotor.configClosedloopRamp(0);
 
-        //sets our closed loop control to use our primary PID slot
+        //Sets our closed loop control to use our primary PID slot
         m_masterMotor.selectProfileSlot(RobotMap.PID_PRIMARY_SLOT, 0);
     }
 
-      /**
+    /**
      * Zeros the selected encoder
      */
     public void zeroEncoder() {
