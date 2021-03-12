@@ -94,6 +94,7 @@ public class Auton{
      */
     public void init(){
         m_drivetrain.zeroEncoders();
+        m_drivetrain.zeroGyro();
         m_type = AutonType.kBarrel;
         m_step = AutonStep.kStep1;
     }
