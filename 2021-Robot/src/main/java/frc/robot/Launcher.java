@@ -32,15 +32,15 @@ public class Launcher{
     }
         //Declare the launcher state
         State m_state;
-
-        //Declare the encoder plugged into the master Talon
-        SensorCollection m_encoder;
     
     //Declare the motors used for Launcher
     private TalonSRX m_masterMotor;
     private BaseMotorController m_closeSlaveMotor;
     private BaseMotorController m_farSlaveMotor1;
     private BaseMotorController m_farSlaveMotor2;
+
+    //the encoder plugged into the master Talon
+    SensorCollection m_encoder;
 
     /**
      * Constructor for Launcher objects
@@ -60,6 +60,9 @@ public class Launcher{
 
         //Run the config method to set up velocity control
         configVelocityControl();
+
+        //Instantiates the encoder as the encoder plugged into the master
+        m_encoder = new SensorCollection(m_masterMotor);
     }
 
     /**
@@ -70,6 +73,9 @@ public class Launcher{
         m_closeSlaveMotor = new VictorSPX(RobotMap.CLOSE_LAUNCHER_SLAVE_ID);
         m_farSlaveMotor1 = new VictorSPX(RobotMap.FAR_LAUNCHER_SLAVE1_ID);
         m_farSlaveMotor2 = new VictorSPX(RobotMap.FAR_LAUNCHER_SLAVE2_ID);
+
+        //Instantiates the encoder as the encoder plugged into the master
+        m_encoder = new SensorCollection(m_masterMotor);
 
     }
 
@@ -110,10 +116,10 @@ public class Launcher{
 
         //Checks which state we are in and sets motor speed for each state
         if(m_state == State.kIdle) {
-           setVelocity(0.0);
+           setSpeed(0.0);
         }
         else if (m_state == State.kSetup) {
-            setVelocity(0.5);
+            setSpeed(0.5);
         }
         else if (m_state == State.kLaunch){
             setVelocity(0.8);
@@ -196,5 +202,15 @@ public class Launcher{
      */
     public int getEncoderPosition() {
         return m_encoder.getQuadraturePosition();
+    }
+
+    /**
+     * toString method containing motor ID and inversion and encoder position
+     * 
+     * @return the state of the Launcher object summarized in a string
+     */
+    public String toString() {
+        return "Motor ID: " + m_masterMotor.getDeviceID() + ", Motor Inversion: " + m_masterMotor.getInverted()
+        + ", Current Output (percent): " + m_masterMotor.getMotorOutputPercent()+ " | Encoder Position: "+ m_encoder.getQuadraturePosition();
     }
 }
