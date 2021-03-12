@@ -181,6 +181,9 @@ public class Drivetrain {
         return m_masterRightMotor.getSelectedSensorVelocity();
     }
 
+    /**
+     * Returns the angle of the robot in degrees
+     */
     public double getGyro(){
         return m_gyro.getOffsetYaw();
     }
