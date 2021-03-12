@@ -59,6 +59,9 @@ public class Drivetrain {
     // Declares the Gear
     private Gear m_gear;
 
+    // Declares the Gyro
+    private Navx m_gyro;
+
 
     /**
      * Constructor for instantiating drivetrain objects 
@@ -81,6 +84,8 @@ public class Drivetrain {
         // Set gears initially to unknown, so gears can be switch to high or low at first
         m_gear = Gear.kUnknown;
 
+        // Instantiates the NavX Gyro
+        m_gyro = new NavX(SerialPort.Port.kMXP);
     }
 
     /**
@@ -174,6 +179,13 @@ public class Drivetrain {
      */
     public double getRightDrvieEncoderVelocity(){
         return m_masterRightMotor.getSelectedSensorVelocity();
+    }
+
+    /**
+     * Returns the angle of the robot in degrees
+     */
+    public double getGyro(){
+        return m_gyro.getOffsetYaw();
     }
 
     /**

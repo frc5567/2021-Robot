@@ -23,8 +23,11 @@ public class RobotMap {
     /** The timeout constant for the CTRE config methods in miliseconds */
     public static final int TIMEOUT_MS = 30;
 
+
+    public static final double INCHES_TO_ENCODER_TICKS = 4096 / 18.85;
     //the total number of encoder ticks in a rotate----TODO: Check to see if this is the correct number
     public static final double STARTING_TICK_VALUE = 1440;
+
 
     /**
      * Launcher Constants
