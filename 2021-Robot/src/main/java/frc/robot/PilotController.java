@@ -13,7 +13,7 @@ import frc.robot.Drivetrain.Gear;
  * @author Caleb Overbeek
  * @version 2/22/2021
  */
-public class PilotController implements ShuffleboardEnabled {
+public class PilotController {
     /**
      * Enum to indicate different control systems
      * <li>{@link #kTank}</li>
@@ -96,7 +96,7 @@ public class PilotController implements ShuffleboardEnabled {
      * @param driveType The type of drive control that the pilot wants (tank or arcade)
      */
     public PilotController(DriveType driveType) {
-        m_drivetrain = new Drivetrain(RobotMap.DRIVETRAIN_HAS_TWO_SOLENOIDS);
+        m_drivetrain = new Drivetrain();
         m_driveType = driveType;
  
         //instantiate xbox controller for controlling the drivetrain
