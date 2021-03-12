@@ -61,8 +61,6 @@ public class Launcher{
         //Run the config method to set up velocity control
         configVelocityControl();
 
-        //Instantiates the encoder as the encoder plugged into the master
-        m_encoder = new SensorCollection(m_masterMotor);
     }
 
     /**
