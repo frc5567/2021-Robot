@@ -5,17 +5,28 @@ import com.ctre.phoenix.motorcontrol.SensorCollection;
 import com.ctre.phoenix.motorcontrol.can.BaseMotorController;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;  
 
+import edu.wpi.first.wpilibj.DigitalInput;
+
 public class Magazine {
 
     //Declare motor controller for the magazine
     private TalonSRX m_motor;
 
+     //Declare sensors 
+     private DigitalInput m_intakeSensor;
+     private DigitalInput m_launchSensor;
+
     /**
      * Constructor for magazine objects
-     * @param motor The motor that runs the magazine
+     * @param motor The motor that drives the magazine
+     * @param intakeSensor The sensor mounted near the input to index our balls
+     * @param launchSensor The sensor mounted near the launchers to tick our count in the magazine down
      */
-    public Magazine(TalonSRX motor){
+    public Magazine(TalonSRX motor, DigitalInput intakeSensor, DigitalInput launchSensor) {
         m_motor = motor;
+
+        m_intakeSensor = intakeSensor;
+        m_launchSensor = launchSensor;
     } 
 
     /**
@@ -23,6 +34,9 @@ public class Magazine {
      */
     public Magazine(){
         m_motor = new TalonSRX(RobotMap.MAGAZINE_MOTOR_PORT);
+
+        m_intakeSensor = new DigitalInput(RobotMap.MAGAZINE_IN_SENSOR_PORT);
+        m_launchSensor = new DigitalInput(RobotMap.MAGAZINE_OUT_SENSOR_PORT);
     }
 
     /**
@@ -32,4 +46,27 @@ public class Magazine {
         m_motor.set(ControlMode.PercentOutput, speed);
     }
 
+     /**
+     * Runs the belt at an inputted speed
+     * @param speed The percent speed both belts should move at from -1.0 to 1.0
+     */
+    public void runBelt(double speed) {
+        //sets percent output on both belts
+        m_motor.set(ControlMode.PercentOutput, speed);
+    }
+
+    /**
+     * Runs the belt based off of sensor input
+     * <p>Every time the intake sensor is tripped, 
+     * the magazine runs until the ball is clear of the intake sensor.
+     */
+    public void sensorBeltControl() {
+        if (!m_intakeSensor.get() && m_launchSensor.get()) {
+            runBelt(RobotMap.MAGAZINE_INTAKE_SPEED);
+        }
+        else {
+            runBelt(0);
+        }
+    }
+    
 }
