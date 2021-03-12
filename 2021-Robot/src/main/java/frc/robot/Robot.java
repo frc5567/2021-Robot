@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import frc.robot.PilotController.DriveType;
-//import frc.robot.LimelightReader.Pipeline;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -48,10 +48,10 @@ public class Robot extends TimedRobot {
   public Robot(){
    // m_limelightReader = new LimelightReader();
     //instantiates our PilotController, which controls all systems on the drivetrain
-    m_pilotController = new PilotController(DriveType.kArcade, m_limelightReader);
+    m_pilotController = new PilotController(DriveType.kArcade);
 
     //instantiates our copilotController, which controls the other systems of our robot
-    m_copilotController = new CopilotController(m_limelightReader, m_pilotController,getTargeting(), m_pilotController.getDrivetrain());
+    m_copilotController = new CopilotController(m_pilotController.getDrivetrain());
 
     //instantiates the auton
     m_auton = new Auton(m_pilotController.getTargeting(), m_copilotController.getMagazine(), m_copilotController.getLauncher(), m_pilotController.getDrivetrain());
@@ -111,7 +111,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void disabledInit() {
-    m_pilotController.getTargeting().getPID_Values();
     m_pilotController.getDrivetrain().setNeutralMode(NeutralMode.Coast);
   }
 
@@ -121,7 +120,6 @@ public class Robot extends TimedRobot {
     //and sets them on our drivetrain class. Our driver input is multiplied by our scalar values
     //in order to scale back drivetrain speed.
     m_pilotController.setInputScalar();
-    m_pilotController.getTargeting().setPID();
     m_pilotController.getDrivetrain().setNeutralMode(NeutralMode.Coast);
   }
 
