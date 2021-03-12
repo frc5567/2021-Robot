@@ -39,6 +39,9 @@ public class Launcher{
     private BaseMotorController m_farSlaveMotor1;
     private BaseMotorController m_farSlaveMotor2;
 
+    //the encoder plugged into the master Talon
+    SensorCollection m_encoder;
+
     /**
      * Constructor for Launcher objects
      * @param masterMoter The master motor for the Launcher
@@ -54,6 +57,9 @@ public class Launcher{
 
         //Set the initial state to Idle
         SetState(State.kIdle);
+
+        //Instantiates the encoder as the encoder plugged into the master
+        m_encoder = new SensorCollection(m_masterMotor);
     }
 
     /**
@@ -64,6 +70,9 @@ public class Launcher{
         m_closeSlaveMotor = new VictorSPX(RobotMap.CLOSE_LAUNCHER_SLAVE_ID);
         m_farSlaveMotor1 = new VictorSPX(RobotMap.FAR_LAUNCHER_SLAVE1_ID);
         m_farSlaveMotor2 = new VictorSPX(RobotMap.FAR_LAUNCHER_SLAVE2_ID);
+
+        //Instantiates the encoder as the encoder plugged into the master
+        m_encoder = new SensorCollection(m_masterMotor);
 
     }
 
@@ -98,5 +107,36 @@ public class Launcher{
         else if (m_state == State.kLaunch){
             SetSpeed(0.8);
         }
+    }
+
+    /**
+     * Zeros the selected encoder
+     */
+    public void zeroEncoder() {
+        m_masterMotor.setSelectedSensorPosition(0);
+    }
+
+    /**
+     * @return The velocity of the encoder in units per 100ms
+     */
+    public int getEncoderVelocity() {
+        return m_encoder.getQuadratureVelocity();
+    }
+
+    /**
+     * @return the position of the encoder in encoder units
+     */
+    public int getEncoderPosition() {
+        return m_encoder.getQuadraturePosition();
+    }
+
+    /**
+     * toString method containing motor ID and inversion and encoder position
+     * 
+     * @return the state of the Launcher object summarized in a string
+     */
+    public String toString() {
+        return "Motor ID: " + m_masterMotor.getDeviceID() + ", Motor Inversion: " + m_masterMotor.getInverted()
+        + ", Current Output (percent): " + m_masterMotor.getMotorOutputPercent()+ " | Encoder Position: "+ m_encoder.getQuadraturePosition();
     }
 }

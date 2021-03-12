@@ -23,7 +23,11 @@ public class RobotMap {
     /** The timeout constant for the CTRE config methods in miliseconds */
     public static final int TIMEOUT_MS = 30;
 
+
     public static final double INCHES_TO_ENCODER_TICKS = 4096 / 18.85;
+    //the total number of encoder ticks in a rotate----TODO: Check to see if this is the correct number
+    public static final double STARTING_TICK_VALUE = 1440;
+
 
     /**
      * Launcher Constants
@@ -32,6 +36,12 @@ public class RobotMap {
     public static final int CLOSE_LAUNCHER_SLAVE_ID = 22;
     public static final int FAR_LAUNCHER_SLAVE1_ID = 23;
     public static final int FAR_LAUNCHER_SLAVE2_ID = 24;
+
+    //the measurement period for calculating velocity off of the encoder
+    public static final VelocityMeasPeriod VELOCITY_MEASUREMENT_PERIOD = VelocityMeasPeriod.Period_10Ms;
+    
+    //the period for reading data from the encoders attached to the motor controllers
+    public static final int LAUNCHER_FEEDBACK_PERIOD_MS = 10;
     
     /**
      * Intake Constants
