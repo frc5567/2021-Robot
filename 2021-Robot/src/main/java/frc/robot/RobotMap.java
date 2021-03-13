@@ -40,10 +40,10 @@ public class RobotMap {
     public static final int FAR_LAUNCHER_SLAVE2_ID = 24;
 
     //launcher PID constants for velocity control
-    public static final double LAUNCHER_P = 1.0;
+    public static final double LAUNCHER_P = 0.1;//1
     public static final double LAUNCHER_I = 0;
-    public static final double LAUNCHER_D = 0.1;
-    public static final double LAUNCHER_F = .27;
+    public static final double LAUNCHER_D = 0;// 0.1
+    public static final double LAUNCHER_F = 0;// .27
     
     //the launcher timeout for running confing methods
     public static final int LAUNCHER_CONFIG_TIMEOUT_MS = 30;
@@ -95,7 +95,7 @@ public class RobotMap {
     /**
      * Magazine Constants
      */
-    public static final int MAGAZINE_MOTOR_PORT = 26;
+    public static final int MAGAZINE_MOTOR_PORT = 30;
 
     /**The DIO port for the photoelectric sensor mounted near the intake */
     public static final int MAGAZINE_IN_SENSOR_PORT = 7;
@@ -121,10 +121,10 @@ public class RobotMap {
 
     public static final double RPM_TO_UNITS_PER_100MS = 2048.0 / 600;
 
-    public static final double LAUNCHER_HOLDING_SPEED = 0.5;
-    public static final double MAGAZINE_LAUNCH_SPEED = 0.65;
-    public static final double MAGAZINE_DUMP_SPEED = -0.45;
-    public static final double MAGAZINE_INTAKE_SPEED = 0.65;
+    public static final double LAUNCHER_HOLDING_SPEED = 0.5; //original 0.5
+    public static final double MAGAZINE_LAUNCH_SPEED = 0.4; //original 0.65
+    public static final double MAGAZINE_DUMP_SPEED = -0.45; //original -0.45
+    public static final double MAGAZINE_INTAKE_SPEED = 0.4; //original 0.65
 
     public static final double INNER_INTAKE_SPEED = 0.3;
     public static final double OUTER_INTAKE_SPEED = 0.8;
@@ -135,7 +135,7 @@ public class RobotMap {
 		public static final int MOVE_MAGAZINE_DOWN = 4;
 		public static final int MOVE_MAGAZINE_LAUNCH = 5;
 		public static final int LAUNCHER_AND_MAGAZINE = 7;
-		public static final int REV_LAUNCHER = 7;
+		public static final int REV_LAUNCHER = 6;
 		public static final int ENABLE_INTAKE = 8;
 		public static final int DISABLE_INTAKE = 9;
 		public static final int DUMP_BALLS = 12;
@@ -156,13 +156,13 @@ public class RobotMap {
     /**
      * Auton Constants
      */
-    public static final double FORWARD_DRIVE_SPEED = 0.7;
+    public static final double FORWARD_DRIVE_SPEED = 0.25;
 
-    public static final double BACKWARD_DRIVE_SPEED = -0.7;
+    public static final double BACKWARD_DRIVE_SPEED = -0.25;
 
-    public static final double CLOCKWISE_SPEED = 0.4;
+    public static final double CLOCKWISE_SPEED = 0.25;
 
-    public static final double COUNTER_CLOCKWISE_SPEED = -0.4;
+    public static final double COUNTER_CLOCKWISE_SPEED = -0.25;
 
 
 }

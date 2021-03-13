@@ -103,13 +103,16 @@ public class Auton{
      * This method is to run throughout autonomous mode 
      */
     public void periodic(){
-      
+      System.out.println("entered periodic");
         // Auton used for Barrel Path
         if(m_type == AutonType.kBarrel){
-
+            System.out.println("entered pathing");
+            System.out.println(m_drivetrain.getGyro());
+            System.out.println(m_step);
             //Drives forward for 120 inches
             if(m_step == AutonStep.kStep1){
 
+                System.out.println("here");
                 if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 120)){
                     m_step = AutonStep.kStep2;
                 }
@@ -121,7 +124,7 @@ public class Auton{
 
             //Rotates Clockwise 45 degrees
             else if(m_step == AutonStep.kStep2){
-
+                System.out.println("here");
                 if(turnToAngle(RobotMap.CLOCKWISE_SPEED, 45)){
                     m_step = AutonStep.kStep3;
                 }
@@ -757,7 +760,7 @@ public class Auton{
     public boolean driveToTarget(double speed, double target){
         
         target = target * RobotMap.INCHES_TO_ENCODER_TICKS;
-
+        System.out.println(target);
         if((target > 0) && (speed > 0)){
 
             if(m_drivetrain.getLeftDriveEncoderPosition() < target || m_drivetrain.getRightDriveEncoderPosition() < target){
@@ -802,7 +805,7 @@ public class Auton{
      */
     public boolean turnToAngle(double speed, double target){
 
-        if((m_drivetrain.getGyro() != (target * 1.01)) || (m_drivetrain.getGyro() != (target * 0.99))){
+        if((m_drivetrain.getGyro() != (target * 1.05)) || (m_drivetrain.getGyro() != (target * 0.95))){
             m_drivetrain.arcadeDrive(0, speed);
             return false;
         }

@@ -7,6 +7,7 @@ import frc.robot.Drivetrain.Gear;
 import frc.robot.GamePad;
 import frc.robot.Intake;
 import frc.robot.Intake.Position;
+import frc.robot.Launcher.State;
 
 /**
  * A class to control the Intake, Launcher, and Magazine using the copilot controller
@@ -15,7 +16,7 @@ import frc.robot.Intake.Position;
  */
 public class CopilotController{
     public enum TargetingStage {
-        kRevAndTarget, kRevToVelocity, kRunMagazine
+        kRevAndTarget, kRevToVelocity, kRunMagazine;
     }
 
     //declare drivetrain
@@ -36,8 +37,6 @@ public class CopilotController{
     // Declares the magazine to index the balls into the launcher, backwards to unclog the balls, and back to the intake to dump the balls
     private Magazine m_magazine;
 
-    // Declare the Drivetrain
-    private Drivetrain m_drivetrain;
 
     /**
      * Creates the objects to allow the copilot controller/gamepad to control the intake, launcher,
@@ -70,11 +69,7 @@ public class CopilotController{
     public void controlMagazineAndLauncher(){
         //When we first start targeting, grab control of drivetrain and reset target
         if (m_gamePad.getLauncherAndMagazinePressed()) {
-            //lock the drivetrain only on rising edge
-            PilotController.is_currently_targeting = true;
 
-            //set our stage to the first one
-            m_targetingStage = TargetingStage.kRevAndTarget;
 
             m_drivetrain.arcadeDrive(0, 0);
 
@@ -83,51 +78,57 @@ public class CopilotController{
         //while the button is held, run the targeting and launching sequence
         else if(m_gamePad.getLauncherAndMagazine()) {
             //if we are in the first stage
-            if (m_targetingStage == TargetingStage.kRevAndTarget) {
-                //sets the launcher to the holding speed
-                m_launcher.setSpeed(RobotMap.LAUNCHER_HOLDING_SPEED);
-
-            }
-            //revs the launcher up to launch speed
-            else if (m_targetingStage == TargetingStage.kRevToVelocity) {
-
-                //assigns the targetVelocity
-                //ideally this would be a function of distance to target, currently it is set from testing
-                double targetVelocity = 4800; //TODO: Grab launch speed as a function of distance
-
-                //set the velocity to a launch speed
-                m_launcher.setVelocity(targetVelocity *RobotMap.RPM_TO_UNITS_PER_100MS);
-
-                //if we are at speed. exit out
-                if (m_launcher.getEncoderVelocity() > targetVelocity * RobotMap.RPM_TO_UNITS_PER_100MS) {
-                    m_targetingStage = TargetingStage.kRunMagazine;
-                }
-            }
-            //drives the magazine for launching
-            else if (m_targetingStage == TargetingStage.kRunMagazine) {
-                //zero drivetrain
-                m_drivetrain.arcadeDrive(0, 0);
-
-                //run our magazine to launch balls
-                m_magazine.RunMagazine(RobotMap.MAGAZINE_LAUNCH_SPEED);
-            }
+           // m_magazine.RunMagazine(RobotMap.MAGAZINE_LAUNCH_SPEED);
+            
+            m_launcher.setState(State.kLaunch);
+            System.out.println(m_launcher.toString());
         }
-        //zero all motors on release and return drive control
+        //     if (m_targetingStage == TargetingStage.kRevAndTarget) {
+        //         //sets the launcher to the holding speed
+        //         m_launcher.setSpeed(RobotMap.LAUNCHER_HOLDING_SPEED);
+
+        //     }
+        //     //revs the launcher up to launch speed
+        //     else if (m_targetingStage == TargetingStage.kRevToVelocity) {
+
+        //         //assigns the targetVelocity
+        //         //ideally this would be a function of distance to target, currently it is set from testing
+        //         double targetVelocity = 4800; //TODO: Grab launch speed as a function of distance
+
+        //         //set the velocity to a launch speed
+        //         m_launcher.setVelocity(targetVelocity *RobotMap.RPM_TO_UNITS_PER_100MS);
+
+        //         //if we are at speed. exit out
+        //         if (m_launcher.getEncoderVelocity() > targetVelocity * RobotMap.RPM_TO_UNITS_PER_100MS) {
+        //             m_targetingStage = TargetingStage.kRunMagazine;
+        //         }
+        //     }
+        //     //drives the magazine for launching
+        //     else if (m_targetingStage == TargetingStage.kRunMagazine) {
+        //         //zero drivetrain
+        //         m_drivetrain.arcadeDrive(0, 0);
+
+        //         //run our magazine to launch balls
+        //         m_magazine.RunMagazine(RobotMap.MAGAZINE_LAUNCH_SPEED);
+        //     }
+        // }
+        // //zero all motors on release and return drive control
         else if (m_gamePad.getLauncherAndMagazineReleased()) {
-            m_launcher.setSpeed(0);
+            m_launcher.setState(State.kIdle);
             m_magazine.RunMagazine(0);
             m_drivetrain.arcadeDrive(0, 0);
             PilotController.is_currently_targeting = false;
         }
         else if(m_gamePad.getRevLauncherPressed()) {
-            m_launcher.setSpeed(RobotMap.LAUNCHER_HOLDING_SPEED);
+            m_launcher.setState(State.kSetup);
             m_drivetrain.shiftGear(Gear.kLowGear);
         }
         else if(m_gamePad.getRevLauncherReleased()) {
-            m_launcher.setSpeed(0);
+            m_launcher.setState(State.kIdle);
         }
         else if(m_gamePad.getMoveMagazine()){
             m_magazine.RunMagazine(RobotMap.MAGAZINE_LAUNCH_SPEED);
+            System.out.println("test");
         } 
         //When the getMoveMagazineDown button is pushed, the magazine moves the balls back towars the intake at a speed of -0.37
         else if(m_gamePad.getMoveMagazineDown()){
@@ -165,6 +166,7 @@ public class CopilotController{
         if (m_intake.m_position == Position.kLowered) {
             //Sets the motor speeds for the inner and outer motors to bring the balls in
             m_intake.setOuterIntakeMotor(RobotMap.OUTER_INTAKE_SPEED);
+            m_intake.setInnerIntakeMotor(RobotMap.INNER_INTAKE_SPEED);
         }
         else {
             //sets the inner and outer motor speed to 0 to stop the intake of the balls

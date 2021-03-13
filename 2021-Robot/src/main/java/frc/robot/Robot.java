@@ -34,6 +34,7 @@ public class Robot extends TimedRobot {
   /** The auton class that runs our auton */
   private Auton m_auton;
 
+  private Magazine m_magazine;
   //Declare our limelight reader object
   //LimelightReader m_limelightReader;
 

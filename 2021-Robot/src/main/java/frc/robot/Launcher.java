@@ -120,7 +120,7 @@ public class Launcher{
             setSpeed(0.5);
         }
         else if (m_state == State.kLaunch){
-            setVelocity(0.8);
+            setVelocity(1000 *RobotMap.RPM_TO_UNITS_PER_100MS);
         }
     }
     private void configVelocityControl() {
