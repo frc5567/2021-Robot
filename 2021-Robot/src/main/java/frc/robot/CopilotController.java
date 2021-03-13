@@ -18,6 +18,9 @@ public class CopilotController{
         kRevAndTarget, kRevToVelocity, kRunMagazine
     }
 
+    //declare drivetrain
+    private Drivetrain m_drivetrain;
+
     //declare Targeting enum to keep track of current targeting state
     private TargetingStage m_targetingStage = TargetingStage.kRevAndTarget;
 
@@ -82,7 +85,7 @@ public class CopilotController{
             //if we are in the first stage
             if (m_targetingStage == TargetingStage.kRevAndTarget) {
                 //sets the launcher to the holding speed
-                m_launcher.setMotor(RobotMap.LAUNCHER_HOLDING_SPEED);
+                m_launcher.setSpeed(RobotMap.LAUNCHER_HOLDING_SPEED);
 
             }
             //revs the launcher up to launch speed
@@ -96,7 +99,7 @@ public class CopilotController{
                 m_launcher.setVelocity(targetVelocity *RobotMap.RPM_TO_UNITS_PER_100MS);
 
                 //if we are at speed. exit out
-                if (m_launcher.getMasterMotor().getSelectedSensorVelocity() > targetVelocity * RobotMap.RPM_TO_UNITS_PER_100MS) {
+                if (m_launcher.getEncoderVelocity() > targetVelocity * RobotMap.RPM_TO_UNITS_PER_100MS) {
                     m_targetingStage = TargetingStage.kRunMagazine;
                 }
             }
@@ -111,17 +114,17 @@ public class CopilotController{
         }
         //zero all motors on release and return drive control
         else if (m_gamePad.getLauncherAndMagazineReleased()) {
-            m_launcher.setMotor(0);
+            m_launcher.setSpeed(0);
             m_magazine.RunMagazine(0);
             m_drivetrain.arcadeDrive(0, 0);
             PilotController.is_currently_targeting = false;
         }
         else if(m_gamePad.getRevLauncherPressed()) {
-            m_launcher.setMotor(RobotMap.LAUNCHER_HOLDING_SPEED);
+            m_launcher.setSpeed(RobotMap.LAUNCHER_HOLDING_SPEED);
             m_drivetrain.shiftGear(Gear.kLowGear);
         }
         else if(m_gamePad.getRevLauncherReleased()) {
-            m_launcher.setMotor(0);
+            m_launcher.setSpeed(0);
         }
         else if(m_gamePad.getMoveMagazine()){
             m_magazine.RunMagazine(RobotMap.MAGAZINE_LAUNCH_SPEED);
@@ -146,7 +149,7 @@ public class CopilotController{
      * Turns on the Intake to take in the balls and turns the intake off to stop the intake of balls
      */
     public void controlIntake(){
-        if (m_gamePad.getDumpAllBalls() || m_gamePad.getColorWheelColor()) {
+        if (m_gamePad.getDumpAllBalls()) {
             m_intake.setInnerIntakeMotor(-RobotMap.INNER_INTAKE_SPEED);
             m_intake.setOuterIntakeMotor(-RobotMap.OUTER_INTAKE_SPEED);
             m_intake.setPosition(Position.kRaised);
