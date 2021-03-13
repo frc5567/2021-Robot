@@ -1,4 +1,7 @@
 package frc.robot;
+
+import com.ctre.phoenix.motorcontrol.VelocityMeasPeriod;
+
 /**
  * Constants for Variables needed throughout code
  */

@@ -54,7 +54,7 @@ public class Robot extends TimedRobot {
     m_copilotController = new CopilotController(m_pilotController.getDrivetrain());
 
     //instantiates the auton
-    m_auton = new Auton(m_pilotController.getTargeting(), m_copilotController.getMagazine(), m_copilotController.getLauncher(), m_pilotController.getDrivetrain());
+    m_auton = new Auton(m_pilotController.getDrivetrain());
 
     //Sets up our camera testing tab
     shuffleboardConfig();
