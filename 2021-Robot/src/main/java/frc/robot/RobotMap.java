@@ -7,7 +7,6 @@ import com.ctre.phoenix.motorcontrol.VelocityMeasPeriod;
  */
 public class RobotMap {
     /**
-
      * Drivetrain Constants for motors
      */
     /** Motor ID Constants */
@@ -98,6 +97,12 @@ public class RobotMap {
      */
     public static final int MAGAZINE_MOTOR_PORT = 26;
 
+    /**The DIO port for the photoelectric sensor mounted near the intake */
+    public static final int MAGAZINE_IN_SENSOR_PORT = 7;
+
+    /**The DIO port for the photoelectric sensor mounted near the launcher */
+    public static final int MAGAZINE_OUT_SENSOR_PORT = 8;
+
      /**
      * Pilot Controller Constants
      */
@@ -150,6 +155,4 @@ public class RobotMap {
 }
    
 
-
-
-
+}
