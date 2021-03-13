@@ -36,6 +36,9 @@ public class CopilotController{
     // Declares the magazine to index the balls into the launcher, backwards to unclog the balls, and back to the intake to dump the balls
     private Magazine m_magazine;
 
+    // Declare the Drivetrain
+    private Drivetrain m_drivetrain;
+
     /**
      * Creates the objects to allow the copilot controller/gamepad to control the intake, launcher,
      *  and shifting Gears
