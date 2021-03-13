@@ -6,6 +6,7 @@
 package frc.robot;
 
     import edu.wpi.first.wpilibj.DoubleSolenoid;
+    import edu.wpi.first.wpilibj.SerialPort;
     import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 
     import com.ctre.phoenix.motorcontrol.can.TalonFX;
