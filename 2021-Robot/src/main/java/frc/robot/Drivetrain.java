@@ -6,6 +6,7 @@
 package frc.robot;
 
     import edu.wpi.first.wpilibj.DoubleSolenoid;
+    import edu.wpi.first.wpilibj.SerialPort;
     import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 
     import com.ctre.phoenix.motorcontrol.can.TalonFX;
@@ -60,7 +61,7 @@ public class Drivetrain {
     private Gear m_gear;
 
     // Declares the Gyro
-    private Navx m_gyro;
+    private NavX m_gyro;
 
 
     /**
