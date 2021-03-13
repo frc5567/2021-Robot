@@ -97,6 +97,10 @@ public class Drivetrain {
         m_rightDriveEncoder.setQuadraturePosition(0, RobotMap.TIMEOUT_MS);
     }
 
+    public void zeroGyro(){
+        m_gyro.zeroYaw();
+    }
+
     /**
      * This function sets the drive gear using the pistons to a value
      * It sets both the left and right solenoid to a value
