@@ -110,7 +110,7 @@ public class Auton{
             //Drives forward for 120 inches
             if(m_step == AutonStep.kStep1){
 
-                if(driveToTarget(0.7, 120)){
+                if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 120)){
                     m_step = AutonStep.kStep2;
                 }
 
@@ -122,7 +122,7 @@ public class Auton{
             //Rotates Clockwise 45 degrees
             else if(m_step == AutonStep.kStep2){
 
-                if(turnToAngle(0.4, 45)){
+                if(turnToAngle(RobotMap.CLOCKWISE_SPEED, 45)){
                     m_step = AutonStep.kStep3;
                 }
 
@@ -134,7 +134,7 @@ public class Auton{
             //Drives forward for 40 inches
             else if(m_step == AutonStep.kStep3){
 
-                if(driveToTarget(0.7, 40)){
+                if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 40)){
                     m_step = AutonStep.kStep4;
                 }
 
@@ -146,7 +146,7 @@ public class Auton{
             //Rotates Clockwise 45 degrees
             else if(m_step == AutonStep.kStep4){
 
-                if(turnToAngle(0.4, 45)){
+                if(turnToAngle(RobotMap.CLOCKWISE_SPEED, 45)){
                     m_step = AutonStep.kStep5;
                 }
 
@@ -158,7 +158,7 @@ public class Auton{
             //Drives forward for 40 inches
             else if(m_step == AutonStep.kStep5){
 
-                if(driveToTarget(0.7, 40)){
+                if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 40)){
                     m_step = AutonStep.kStep6;
                 }
 
@@ -170,7 +170,7 @@ public class Auton{
             //Rotates Clockwise 45 degrees
             else if(m_step == AutonStep.kStep6){
 
-                if(turnToAngle(0.4, 45)){
+                if(turnToAngle(RobotMap.CLOCKWISE_SPEED, 45)){
                     m_step = AutonStep.kStep7;
                 }
 
@@ -182,7 +182,7 @@ public class Auton{
             //Drives forward for 40 inches
             else if(m_step == AutonStep.kStep7){
 
-                if(driveToTarget(0.7, 40)){
+                if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 40)){
                     m_step = AutonStep.kStep8;
                 }
 
@@ -194,7 +194,7 @@ public class Auton{
             //Rotates Clockwise 50 degrees
             else if(m_step == AutonStep.kStep8){
 
-                if(turnToAngle(0.4, 50)){
+                if(turnToAngle(RobotMap.CLOCKWISE_SPEED, 50)){
                     m_step = AutonStep.kStep9;
                 }
 
@@ -206,7 +206,7 @@ public class Auton{
             //Drives forward for 160 inches
             else if(m_step == AutonStep.kStep9){
 
-                if(driveToTarget(0.7, 160)){
+                if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 160)){
                     m_step = AutonStep.kStep10;
                 }
 
@@ -218,7 +218,7 @@ public class Auton{
             //Rotates Counter Clockwise 95 degrees
             else if(m_step == AutonStep.kStep10){
 
-                if(turnToAngle(-0.4, 95)){
+                if(turnToAngle(RobotMap.COUNTER_CLOCKWISE_SPEED, 95)){
                     m_step = AutonStep.kStep11;
                 }
 
@@ -230,7 +230,7 @@ public class Auton{
             //Drives forward for 40 inches
             else if(m_step == AutonStep.kStep11){
 
-                if(driveToTarget(0.7, 40)){
+                if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 40)){
                     m_step = AutonStep.kStep12;
                 }
     
@@ -242,7 +242,7 @@ public class Auton{
             //Rotates Counter Clockwise 45 degrees
             else if(m_step == AutonStep.kStep12){
     
-                if(turnToAngle(-0.4, 45)){                        
+                if(turnToAngle(RobotMap.COUNTER_CLOCKWISE_SPEED, 45)){                        
                     m_step = AutonStep.kStep13;
                 }
     
@@ -254,7 +254,7 @@ public class Auton{
             //Drives forward for 40 inches
             else if(m_step == AutonStep.kStep13){
 
-                if(driveToTarget(0.7, 40)){
+                if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 40)){
                     m_step = AutonStep.kStep14;
                 }
     
@@ -266,7 +266,7 @@ public class Auton{
             //Rotates Counter Clockwise 60 degrees
             else if(m_step == AutonStep.kStep14){
     
-                if(turnToAngle(-0.4, 60)){
+                if(turnToAngle(RobotMap.COUNTER_CLOCKWISE_SPEED, 60)){
                     m_step = AutonStep.kStep15;
                 }
 
@@ -278,7 +278,7 @@ public class Auton{
             //Drives forward for 130 inches
             else if(m_step == AutonStep.kStep15){
 
-                if(driveToTarget(0.7, 130)){
+                if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 130)){
                     m_step = AutonStep.kStep16;
                 }
     
@@ -290,7 +290,7 @@ public class Auton{
             //Rotates Counter Clockwise 75 degrees
             else if(m_step == AutonStep.kStep16){
     
-                if(turnToAngle(-0.4, 45)){
+                if(turnToAngle(RobotMap.COUNTER_CLOCKWISE_SPEED, 45)){
                     m_step = AutonStep.kStep17;
                 }
 
@@ -302,7 +302,7 @@ public class Auton{
             //Drives forward for 40 inches
             else if(m_step == AutonStep.kStep17){
 
-                if(driveToTarget(0.7, 40)){
+                if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 40)){
                     m_step = AutonStep.kStep18;
                 }
     
@@ -314,7 +314,7 @@ public class Auton{
             //Rotates Counter Clockwise 45 degrees
             else if(m_step == AutonStep.kStep18){
     
-                if(turnToAngle(-0.4, 45)){
+                if(turnToAngle(RobotMap.COUNTER_CLOCKWISE_SPEED, 45)){
                     m_step = AutonStep.kStep19;
                 }
 
@@ -326,7 +326,7 @@ public class Auton{
             //Drives forward for 40 inches
             else if(m_step == AutonStep.kStep19){
 
-                if(driveToTarget(0.7, 40)){
+                if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 40)){
                     m_step = AutonStep.kStep20;
                 }
     
@@ -338,7 +338,7 @@ public class Auton{
             //Rotates Counter Clockwise 20 degrees
             else if(m_step == AutonStep.kStep20){
     
-                if(turnToAngle(-0.4, 20)){
+                if(turnToAngle(RobotMap.COUNTER_CLOCKWISE_SPEED, 20)){
                     m_step = AutonStep.kStep21;
                 }
 
@@ -350,7 +350,7 @@ public class Auton{
             //Drives forward for 270 inches
             else if(m_step == AutonStep.kStep21){
 
-                if(driveToTarget(0.7, 270)){
+                if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 270)){
                     m_step = AutonStep.kStop;
                 }
     
@@ -372,7 +372,7 @@ public class Auton{
             //Drives forward for 30 inches
             if(m_step == AutonStep.kStep1){
 
-                if(driveToTarget(0.7, 30)){
+                if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 30)){
                     m_step = AutonStep.kStep2;
                 }
 
@@ -384,7 +384,7 @@ public class Auton{
             //Rotates Counter Clockwise 45 degrees
             else if(m_step == AutonStep.kStep2){
 
-                if(turnToAngle(-0.4, 45)){
+                if(turnToAngle(RobotMap.COUNTER_CLOCKWISE_SPEED, 45)){
                     m_step = AutonStep.kStep3;
                 }
 
@@ -396,7 +396,7 @@ public class Auton{
             //Drives forward for 40 inches
             else if(m_step == AutonStep.kStep3){
 
-                if(driveToTarget(0.7, 40)){
+                if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 40)){
                     m_step = AutonStep.kStep4;
                 }
 
@@ -408,7 +408,7 @@ public class Auton{
             //Rotates Clockwise 45 degrees
             else if(m_step == AutonStep.kStep4){
 
-                if(turnToAngle(0.4, 45)){
+                if(turnToAngle(RobotMap.CLOCKWISE_SPEED, 45)){
                     m_step = AutonStep.kStep5;
                 }
 
@@ -420,7 +420,7 @@ public class Auton{
             //Drives forward for 120 inches
             else if(m_step == AutonStep.kStep5){
 
-                if(driveToTarget(0.7, 120)){
+                if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 120)){
                     m_step = AutonStep.kStep6;
                 }
 
@@ -432,7 +432,7 @@ public class Auton{
             //Rotates Clockwise 45 degrees
             else if(m_step == AutonStep.kStep6){
 
-                if(turnToAngle(0.4, 45)){
+                if(turnToAngle(RobotMap.CLOCKWISE_SPEED, 45)){
                     m_step = AutonStep.kStep7;
                 }
 
@@ -444,7 +444,7 @@ public class Auton{
             //Drives forward for 90 inches
             else if(m_step == AutonStep.kStep7){
 
-                if(driveToTarget(0.7, 90)){
+                if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 90)){
                     m_step = AutonStep.kStep8;
                 }
 
@@ -456,7 +456,7 @@ public class Auton{
             //Rotates Counter Clockwise 90 degrees
             else if(m_step == AutonStep.kStep8){
 
-                if(turnToAngle(-0.4, 90)){
+                if(turnToAngle(RobotMap.COUNTER_CLOCKWISE_SPEED, 90)){
                     m_step = AutonStep.kStep9;
                 }
 
@@ -468,7 +468,7 @@ public class Auton{
             //Drives forward for 40 inches
             else if(m_step == AutonStep.kStep9){
 
-                if(driveToTarget(0.7, 40)){
+                if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 40)){
                     m_step = AutonStep.kStep10;
                 }
 
@@ -480,7 +480,7 @@ public class Auton{
             //Rotates Counter Clockwise 45 degrees
             else if(m_step == AutonStep.kStep10){
 
-                if(turnToAngle(-0.4, 45)){
+                if(turnToAngle(RobotMap.COUNTER_CLOCKWISE_SPEED, 45)){
                     m_step = AutonStep.kStep11;
                 }
 
@@ -492,7 +492,7 @@ public class Auton{
             //Drives forward for 40 inches
             else if(m_step == AutonStep.kStep11){
 
-                if(driveToTarget(0.7, 40)){
+                if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 40)){
                     m_step = AutonStep.kStep12;
                 }
     
@@ -504,7 +504,7 @@ public class Auton{
             //Rotates Counter Clockwise 90 degrees
             else if(m_step == AutonStep.kStep12){
     
-                if(turnToAngle(-0.4, 90)){                        
+                if(turnToAngle(RobotMap.COUNTER_CLOCKWISE_SPEED, 90)){                        
                     m_step = AutonStep.kStep13;
                 }
     
@@ -516,7 +516,7 @@ public class Auton{
             //Drives forward for 70 inches
             else if(m_step == AutonStep.kStep13){
 
-                if(driveToTarget(0.7, 70)){
+                if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 70)){
                     m_step = AutonStep.kStep14;
                 }
     
@@ -528,7 +528,7 @@ public class Auton{
             //Rotates Clockwise 45 degrees
             else if(m_step == AutonStep.kStep14){
     
-                if(turnToAngle(0.4, 45)){
+                if(turnToAngle(RobotMap.CLOCKWISE_SPEED, 45)){
                     m_step = AutonStep.kStep15;
                 }
 
@@ -540,7 +540,7 @@ public class Auton{
             //Drives forward for 120 inches
             else if(m_step == AutonStep.kStep15){
 
-                if(driveToTarget(0.7, 120)){
+                if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 120)){
                     m_step = AutonStep.kStep16;
                 }
     
@@ -552,7 +552,7 @@ public class Auton{
             //Rotates Clockwise 45 degrees
             else if(m_step == AutonStep.kStep16){
     
-                if(turnToAngle(0.4, 45)){
+                if(turnToAngle(RobotMap.CLOCKWISE_SPEED, 45)){
                     m_step = AutonStep.kStep17;
                 }
 
@@ -564,7 +564,7 @@ public class Auton{
             //Drives forward for 70 inches
             else if(m_step == AutonStep.kStep17){
 
-                if(driveToTarget(0.7, 70)){
+                if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 70)){
                     m_step = AutonStep.kStop;
                 }
     
@@ -586,7 +586,7 @@ public class Auton{
             //Drives forward for 70 inches
             if(m_step == AutonStep.kStep1){
 
-                if(driveToTarget(0.7, 70)){
+                if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 70)){
                     m_step = AutonStep.kStep2;
                 }
 
@@ -598,7 +598,7 @@ public class Auton{
             //Rotates Counter Clockwise 30 degrees
             else if(m_step == AutonStep.kStep2){
 
-                if(turnToAngle(-0.4, 30)){
+                if(turnToAngle(RobotMap.COUNTER_CLOCKWISE_SPEED, 30)){
                     m_step = AutonStep.kStep3;
                 }
 
@@ -610,7 +610,7 @@ public class Auton{
             //Drives backwards for 130 inches
             else if(m_step == AutonStep.kStep3){
 
-                if(driveToTarget(-0.7, 130)){
+                if(driveToTarget(RobotMap.BACKWARD_DRIVE_SPEED, -130)){
                     m_step = AutonStep.kStep4;
                 }
 
@@ -622,7 +622,7 @@ public class Auton{
             //Rotates Counter Clockwise 60 degrees
             else if(m_step == AutonStep.kStep4){
 
-                if(turnToAngle(-0.4, 60)){
+                if(turnToAngle(RobotMap.COUNTER_CLOCKWISE_SPEED, 60)){
                     m_step = AutonStep.kStep5;
                 }
 
@@ -634,7 +634,7 @@ public class Auton{
             //Drives backwards for 120 inches
             else if(m_step == AutonStep.kStep5){
 
-                if(driveToTarget(-0.7, 120)){
+                if(driveToTarget(RobotMap.BACKWARD_DRIVE_SPEED, -120)){
                     m_step = AutonStep.kStep6;
                 }
 
@@ -646,7 +646,7 @@ public class Auton{
             //Rotates Counter Clockwise 70 degrees
             else if(m_step == AutonStep.kStep6){
 
-                if(turnToAngle(-0.4, 70)){
+                if(turnToAngle(RobotMap.COUNTER_CLOCKWISE_SPEED, 70)){
                     m_step = AutonStep.kStep7;
                 }
 
@@ -658,7 +658,7 @@ public class Auton{
             //Drives forward for 120 inches
             else if(m_step == AutonStep.kStep7){
 
-                if(driveToTarget(0.7, 120)){
+                if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 120)){
                     m_step = AutonStep.kStep8;
                 }
 
@@ -670,7 +670,7 @@ public class Auton{
             //Rotates Counter Clockwise 40 degrees
             else if(m_step == AutonStep.kStep8){
 
-                if(turnToAngle(-0.4, 40)){
+                if(turnToAngle(RobotMap.COUNTER_CLOCKWISE_SPEED, 40)){
                     m_step = AutonStep.kStep9;
                 }
 
@@ -682,7 +682,7 @@ public class Auton{
             //Drives forward for 30 inches
             else if(m_step == AutonStep.kStep9){
 
-                if(driveToTarget(0.7, 30)){
+                if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 30)){
                     m_step = AutonStep.kStep10;
                 }
 
@@ -694,7 +694,7 @@ public class Auton{
             //Rotates Counter Clockwise 70 degrees
             else if(m_step == AutonStep.kStep10){
 
-                if(turnToAngle(-0.4, 70)){
+                if(turnToAngle(RobotMap.COUNTER_CLOCKWISE_SPEED, 70)){
                     m_step = AutonStep.kStep11;
                 }
 
@@ -706,7 +706,7 @@ public class Auton{
             //Drives forward for 120 inches
             else if(m_step == AutonStep.kStep11){
 
-                if(driveToTarget(0.7, 120)){
+                if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 120)){
                     m_step = AutonStep.kStep12;
                 }
     
@@ -718,7 +718,7 @@ public class Auton{
             //Rotates Counter Clockwise 50 degrees
             else if(m_step == AutonStep.kStep12){
     
-                if(turnToAngle(-0.4, 50)){                        
+                if(turnToAngle(RobotMap.COUNTER_CLOCKWISE_SPEED, 50)){                        
                     m_step = AutonStep.kStep13;
                 }
     
@@ -730,7 +730,7 @@ public class Auton{
             //Drives backwards for 90 inches
             else if(m_step == AutonStep.kStep13){
 
-                if(driveToTarget(-0.7, 90)){
+                if(driveToTarget(RobotMap.BACKWARD_DRIVE_SPEED, -90)){
                     m_step = AutonStep.kStop;
                 }
     
@@ -758,7 +758,7 @@ public class Auton{
         
         target = target * RobotMap.INCHES_TO_ENCODER_TICKS;
 
-        if(target > 0){
+        if((target > 0) && (speed > 0)){
 
             if(m_drivetrain.getLeftDriveEncoderPosition() < target || m_drivetrain.getRightDriveEncoderPosition() < target){
                 m_drivetrain.arcadeDrive(speed, 0);
@@ -772,7 +772,7 @@ public class Auton{
             
         }
 
-        else{
+        else if((target < 0) && (speed < 0)){
 
             if(m_drivetrain.getLeftDriveEncoderPosition() > target || m_drivetrain.getRightDriveEncoderPosition() > target){
                 m_drivetrain.arcadeDrive(speed, 0);
@@ -784,6 +784,12 @@ public class Auton{
                 return true;
             }
             
+        }
+
+        else{
+            System.out.println("Robot will never reach target. Exiting Pathing");
+            m_step = AutonStep.kStop;
+            return false;
         }
         
     }
@@ -797,11 +803,11 @@ public class Auton{
     public boolean turnToAngle(double speed, double target){
 
         if((m_drivetrain.getGyro() != (target * 1.01)) || (m_drivetrain.getGyro() != (target * 0.99))){
-            m_drivetrain.tankDrive(speed, -speed);
+            m_drivetrain.arcadeDrive(0, speed);
             return false;
         }
         else{
-            m_drivetrain.tankDrive(0, 0);
+            m_drivetrain.arcadeDrive(0, 0);
             m_drivetrain.zeroGyro();
             return true;
         }

@@ -152,11 +152,17 @@ public class RobotMap {
      * as oppose to an auxillary controller which controls turning
      */
     public static final int PID_PRIMARY_SLOT = 0;
-}
-<<<<<<< HEAD
 
-=======
-   
+    /**
+     * Auton Constants
+     */
+    public static final double FORWARD_DRIVE_SPEED = 0.7;
+
+    public static final double BACKWARD_DRIVE_SPEED = -0.7;
+
+    public static final double CLOCKWISE_SPEED = 0.4;
+
+    public static final double COUNTER_CLOCKWISE_SPEED = -0.4;
+
 
 }
->>>>>>> 6836e575456f8b469a0eb93696496f77416889a2
