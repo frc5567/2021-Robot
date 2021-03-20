@@ -74,6 +74,10 @@ public class RobotMap {
 
     //the measurement period for calculating velocity off of the encoder
     public static final VelocityMeasPeriod VELOCITY_MEASUREMENT_PERIOD = VelocityMeasPeriod.Period_10Ms;
+
+    public static final double LAUNCHER_SETUP_SPEED = 0.5;
+
+    public static final double LAUNCHER_FIRING_SPEED = 0.9;
     
     /**
      * Intake Constants
@@ -165,5 +169,6 @@ public class RobotMap {
 
     public static final double COUNTER_CLOCKWISE_SPEED = -0.25;
 
+    public static final double ROTATE_BOUND = 0.05;
 
 }

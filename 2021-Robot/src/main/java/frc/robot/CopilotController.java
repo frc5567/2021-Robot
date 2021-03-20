@@ -82,6 +82,12 @@ public class CopilotController{
             m_launcher.setState(State.kLaunch);
             System.out.println(m_launcher.toString());
         }
+        /**
+         * This code was commented out on saturday(3/12) due to it being non functional
+         * This code appears to be what we used last year for successful application of the launcher PID
+         * This code initialy used Limelight for targeting it seems to have broken due to limelight information being removed
+         * This should be looked into futher to see if we can get this working
+         */
         //     if (m_targetingStage == TargetingStage.kRevAndTarget) {
         //         //sets the launcher to the holding speed
         //         m_launcher.setSpeed(RobotMap.LAUNCHER_HOLDING_SPEED);
