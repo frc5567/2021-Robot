@@ -130,7 +130,7 @@ public class CopilotController{
         else if(m_gamePad.getRevLauncherReleased()) {
             m_launcher.setState(State.kIdle);
         }
-        else if(m_gamePad.getMoveMagazine()){
+        if(m_gamePad.getMoveMagazine()){
             m_magazine.RunMagazine(RobotMap.MAGAZINE_LAUNCH_SPEED);
             System.out.println("test");
         } 

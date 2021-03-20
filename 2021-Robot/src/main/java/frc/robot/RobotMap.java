@@ -80,9 +80,9 @@ public class RobotMap {
     //the measurement period for calculating velocity off of the encoder
     public static final VelocityMeasPeriod VELOCITY_MEASUREMENT_PERIOD = VelocityMeasPeriod.Period_10Ms;
 
-    public static final double LAUNCHER_SETUP_SPEED = 0.5;
+    public static final double LAUNCHER_SETUP_SPEED = 0.62;
 
-    public static final double LAUNCHER_FIRING_SPEED = 0.7;
+    public static final double LAUNCHER_FIRING_SPEED = 0.65;
     
     /**
      * Intake Constants
@@ -131,7 +131,7 @@ public class RobotMap {
     public static final double RPM_TO_UNITS_PER_100MS = 2048.0 / 600;
 
     public static final double LAUNCHER_HOLDING_SPEED = 0.5; //original 0.5
-    public static final double MAGAZINE_LAUNCH_SPEED = 0.3; //original 0.65
+    public static final double MAGAZINE_LAUNCH_SPEED = 0.4; //original 0.65
     public static final double MAGAZINE_DUMP_SPEED = -0.45; //original -0.45
     public static final double MAGAZINE_INTAKE_SPEED = 0.4; //original 0.65
 

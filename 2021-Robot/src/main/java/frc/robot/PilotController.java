@@ -131,11 +131,11 @@ public class PilotController {
         turnInput = adjustForDeadband(turnInput);
 
         //halfs speed when A button is held
-        if(m_controller.getAButtonPressed()){
+        if(m_controller.getAButton()){
             //multiplies our input by our current scalar
             //commented out squared inputs per previous pilot's request, may still change to current pilot's preference
-            velocityInput *= m_currentVelocityScalar/2;// * Math.abs(velocityInput);
-            turnInput *= m_currentTurnScalar/2;// * Math.abs(turnInput);
+            velocityInput *= 0.1;// * Math.abs(velocityInput);
+            turnInput *= 0.1;// * Math.abs(turnInput);
         }
         else{
             //multiplies our input by our current scalar
@@ -146,30 +146,6 @@ public class PilotController {
  
         //run our drivetrain with the adjusted input
         m_drivetrain.arcadeDrive(velocityInput, turnInput);
-    }
- 
-     /**
-     * Controls our drivetrain with a tank control system
-     * Left stick y is left side speed, right stick y is right side speed
-     */
-    private void tankDrive() {
-        //read our current stick input
-        //inputs are negative because forward on the stick is naturally negative
-        //so we invert it to make controls match our worldview
-        //we adjust here to make the rest of the method easier to read / debug
-        double leftInput =  -m_controller.getY(Hand.kLeft);
-        double rightInput =  -m_controller.getY(Hand.kRight);
- 
-        //adjust our stick input for the deadband to remove drift
-        leftInput = adjustForDeadband(leftInput);
-        rightInput = adjustForDeadband(rightInput);
- 
-        //scales our left and right sides based on velocity control
-        leftInput *= m_currentVelocityScalar;
-        rightInput *= m_currentVelocityScalar;
- 
-        //run our drivetrain with the adjusted inputs
-        m_drivetrain.tankDrive(leftInput, rightInput);
     }
  
     /**
@@ -201,9 +177,6 @@ public class PilotController {
         //runs our drivetrain based on control scheme passed in
         if (m_driveType == DriveType.kArcade) {
             arcadeDrive();
-        }
-        else if (m_driveType == DriveType.kTank) {
-            tankDrive();
         }
  
         //Controls shifting the gears off of the x and y buttons
