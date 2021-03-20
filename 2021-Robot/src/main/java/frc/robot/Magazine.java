@@ -20,12 +20,12 @@ public class Magazine {
      * @param intakeSensor The sensor mounted near the input to index our balls
      * @param launchSensor The sensor mounted near the launchers to tick our count in the magazine down
      */
-    public Magazine(VictorSPX motor, DigitalInput intakeSensor, DigitalInput launchSensor) {
-        m_motor = motor;
+     public Magazine(){
+        m_motor = new VictorSPX(RobotMap.MAGAZINE_MOTOR_PORT);
 
-        m_intakeSensor = intakeSensor;
-        m_launchSensor = launchSensor;
-    } 
+        m_intakeSensor = new DigitalInput(RobotMap.MAGAZINE_IN_SENSOR_PORT);
+        m_launchSensor = new DigitalInput(RobotMap.MAGAZINE_OUT_SENSOR_PORT);
+    }
 
     /**
      * Sets the magazine to run based on on a set motor speed
