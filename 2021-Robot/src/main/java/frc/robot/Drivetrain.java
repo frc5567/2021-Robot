@@ -14,8 +14,9 @@ package frc.robot;
     import com.ctre.phoenix.motorcontrol.DemandType;
     import com.ctre.phoenix.motorcontrol.NeutralMode;
     import com.ctre.phoenix.motorcontrol.SensorCollection;
+import com.ctre.phoenix.motorcontrol.TalonFXFeedbackDevice;
 
-    import edu.wpi.first.wpilibj.SerialPort;
+import edu.wpi.first.wpilibj.SerialPort;
 
 /**
  * The drivetrain has four motors, and has two speeds for our robot
@@ -40,8 +41,8 @@ public class Drivetrain {
         }
     }
      
-    // Declares TalonFX right motor
-    private TalonFX m_masterRightMotor;
+    // Declares TalonFX right motor TODO: make private
+    public TalonFX m_masterRightMotor;
     // Declares TalonFX left motor
     private TalonFX m_masterLeftMotor;
     // Declares TalonFX slave right motor
@@ -76,6 +77,9 @@ public class Drivetrain {
         m_slaveLeftMotor = new TalonFX(RobotMap.SLAVE_LEFT_FALCON_ID);
         m_slaveRightMotor = new TalonFX(RobotMap.SLAVE_RIGHT_FALCON_ID);
 
+        m_masterRightMotor.setInverted(true);
+        m_slaveRightMotor.setInverted(true);
+
         // Instantiate left and right pistons (solenoids)
         m_leftSolenoid = new DoubleSolenoid(RobotMap.PCM_CAN_ID, RobotMap.LEFT_SOLENOID_FORWARD_PORT, RobotMap.LEFT_SOLENOID_REVERSE_PORT);
         m_rightSolenoid = new DoubleSolenoid(RobotMap.PCM_CAN_ID, RobotMap.RIGHT_SOLENOID_FORWARD_PORT, RobotMap.RIGHT_SOLENOID_REVERSE_PORT);
@@ -83,20 +87,27 @@ public class Drivetrain {
         // Instatiate the left and right encoders
         m_leftDriveEncoder = new SensorCollection(m_masterLeftMotor);
         m_rightDriveEncoder = new SensorCollection(m_masterRightMotor);
+        m_masterRightMotor.setSelectedSensorPosition(0);
 
         // Set gears initially to unknown, so gears can be switch to high or low at first
         m_gear = Gear.kUnknown;
 
         // Instantiates the NavX Gyro
         m_gyro = new NavX(SerialPort.Port.kMXP);
+
+        configSensor();
+        zeroEncoders();
     }
 
     /**
      * Zero the drive encoders
      */
     public void zeroEncoders(){
-        m_leftDriveEncoder.setQuadraturePosition(0, RobotMap.TIMEOUT_MS);
-        m_rightDriveEncoder.setQuadraturePosition(0, RobotMap.TIMEOUT_MS);
+       // m_leftDriveEncoder.setQuadraturePosition(0, RobotMap.TIMEOUT_MS);
+       // m_rightDriveEncoder.setQuadraturePosition(0, RobotMap.TIMEOUT_MS);
+
+        m_masterLeftMotor.setSelectedSensorPosition(0);
+        m_masterRightMotor.setSelectedSensorPosition(0);
     }
 
     public void zeroGyro(){
@@ -140,7 +151,7 @@ public class Drivetrain {
      */
     public void arcadeDrive(double forward, double turn){
         m_masterLeftMotor.set(ControlMode.PercentOutput, forward, DemandType.ArbitraryFeedForward, turn);
-        m_masterRightMotor.set(ControlMode.PercentOutput, -forward, DemandType.ArbitraryFeedForward, turn);
+        m_masterRightMotor.set(ControlMode.PercentOutput, forward, DemandType.ArbitraryFeedForward, turn);
         m_slaveLeftMotor.follow(m_masterLeftMotor);
         m_slaveRightMotor.follow(m_masterRightMotor);
     }
@@ -184,7 +195,7 @@ public class Drivetrain {
     /**
      * Returns the velocity of the drivetrain's right side encoder
      */
-    public double getRightDrvieEncoderVelocity(){
+    public double getRightDriveEncoderVelocity(){
         return m_masterRightMotor.getSelectedSensorVelocity();
     }
 
@@ -211,6 +222,12 @@ public class Drivetrain {
         m_masterRightMotor.setNeutralMode(neutralMode);
         m_slaveLeftMotor.setNeutralMode(neutralMode);
         m_slaveRightMotor.setNeutralMode(neutralMode);
+    }
+
+    public void configSensor(){
+        m_masterLeftMotor.configSelectedFeedbackSensor(TalonFXFeedbackDevice.IntegratedSensor, RobotMap.PID_PRIMARY_SLOT, RobotMap.TIMEOUT_MS);
+        m_masterRightMotor.configSelectedFeedbackSensor(TalonFXFeedbackDevice.IntegratedSensor, RobotMap.PID_PRIMARY_SLOT, RobotMap.TIMEOUT_MS);
+
     }
 
 }

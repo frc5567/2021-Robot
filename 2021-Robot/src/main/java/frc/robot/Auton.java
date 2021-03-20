@@ -104,9 +104,7 @@ public class Auton{
      */
     public void periodic(){
       System.out.println("entered periodic");
-      System.out.println("AutonPath: " + m_type + " | AutonStep: " + m_step +
-      " | EncoderTicks(right, left): " + m_drivetrain.getRightDriveEncoderPosition() + ", " + m_drivetrain.getLeftDriveEncoderPosition()
-       + " | GyroAngle(deg)" +  m_drivetrain.getLeftDriveEncoderPosition());
+      System.out.println("AutonPath: " + m_type + " | AutonStep: " + m_step);
         // Auton used for Barrel Path
         if(m_type == AutonType.kBarrel){
             System.out.println("entered pathing");
@@ -759,12 +757,16 @@ public class Auton{
      * @return whether or not we have reached our target
      */
     public boolean driveToTarget(double speed, double target){
-        
+        double rightEncoder = m_drivetrain.getRightDriveEncoderPosition();
+        double leftEncoder = m_drivetrain.getLeftDriveEncoderPosition();
         target = target * RobotMap.INCHES_TO_ENCODER_TICKS;
         System.out.println("EncoderTarget: " + target);
+        System.out.println("Right Encoder Ticks: " + rightEncoder);
+        System.out.println("Left Encoder Ticks: " + leftEncoder);
+        System.out.println("RIGHT ENCODER POS: " + m_drivetrain.m_masterRightMotor.getSelectedSensorPosition());
         if((target > 0) && (speed > 0)){
 
-            if(m_drivetrain.getLeftDriveEncoderPosition() < target || m_drivetrain.getRightDriveEncoderPosition() < target){
+            if(leftEncoder < target || rightEncoder < target){
                 m_drivetrain.arcadeDrive(speed, 0);
                 return false;
             }
@@ -778,7 +780,7 @@ public class Auton{
 
         else if((target < 0) && (speed < 0)){
 
-            if(m_drivetrain.getLeftDriveEncoderPosition() > target || m_drivetrain.getRightDriveEncoderPosition() > target){
+            if(leftEncoder > target || rightEncoder > target){
                 m_drivetrain.arcadeDrive(speed, 0);
                 return false;
             }
@@ -805,8 +807,10 @@ public class Auton{
      * @return
      */
     public boolean turnToAngle(double speed, double target){
-        System.out.println("EncoderTarget: " + target);
-        if((m_drivetrain.getGyro() > (target * (1 + RobotMap.ROTATE_BOUND))) && (m_drivetrain.getGyro() < (target * (1 - RobotMap.ROTATE_BOUND)))){
+        double currentAngle = m_drivetrain.getGyro();
+        System.out.println("Target Angle: " + target);
+        System.out.println("Current Angle: " + currentAngle);
+        if((m_drivetrain.getGyro() < (target * (1 + RobotMap.ROTATE_BOUND))) && (m_drivetrain.getGyro() > (target * (1 - RobotMap.ROTATE_BOUND)))){
             m_drivetrain.arcadeDrive(0, speed);
             return false;
         }

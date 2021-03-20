@@ -23,7 +23,7 @@ public class RobotMap {
     public static final int RIGHT_SOLENOID_REVERSE_PORT = 1;
 
     /** The timeout constant for the CTRE config methods in miliseconds */
-    public static final int TIMEOUT_MS = 30;
+    public static final int TIMEOUT_MS = 10;
 
 
     public static final double INCHES_TO_ENCODER_TICKS = 4096 / 18.85;
