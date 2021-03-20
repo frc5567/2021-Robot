@@ -78,7 +78,6 @@ public class CopilotController{
         else if(m_gamePad.getLauncherAndMagazine()) {
             //if we are in the first stage
            // m_magazine.RunMagazine(RobotMap.MAGAZINE_LAUNCH_SPEED);
-            
             m_launcher.setState(State.kLaunch);
             //System.out.println(m_launcher.toString());
         }
@@ -125,7 +124,6 @@ public class CopilotController{
             PilotController.is_currently_targeting = false;
         }
         else if(m_gamePad.getRevLauncherPressed()) {
-            m_launcher.getMotorInversion();
             m_launcher.setState(State.kSetup);
             m_drivetrain.shiftGear(Gear.kLowGear);
         }

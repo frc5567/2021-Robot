@@ -40,8 +40,8 @@ public class RobotMap {
     public static final int FAR_LAUNCHER_SLAVE2_ID = 24;
 
     //Motor inversion
-    public static final boolean LAUNCHER_FAR_SLAVE_1_INVERTED = true;
-    public static final boolean LAUNCHER_FAR_SLAVE_2_INVERTED = false;
+    public static final boolean LAUNCHER_FAR_SLAVE_1_INVERTED = false;
+    public static final boolean LAUNCHER_FAR_SLAVE_2_INVERTED = true;
 
 
     //launcher PID constants for velocity control

@@ -97,6 +97,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     m_pilotController.controlDriveTrainPeriodic();
     m_copilotController.periodicCopilotControl();
+    //m_launcher.m_farSlaveMotor2.setInverted(true);
   }
 
   /**

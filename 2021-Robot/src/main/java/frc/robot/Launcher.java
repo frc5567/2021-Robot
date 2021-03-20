@@ -37,7 +37,7 @@ public class Launcher{
     private TalonSRX m_masterMotor;
     private BaseMotorController m_closeSlaveMotor;
     private BaseMotorController m_farSlaveMotor1;
-    private BaseMotorController m_farSlaveMotor2;
+    public BaseMotorController m_farSlaveMotor2;
 
     //the encoder plugged into the master Talon
     SensorCollection m_encoder;
@@ -63,7 +63,7 @@ public class Launcher{
         setState(State.kIdle);
 
         //Run the config method to set up velocity control
-        configVelocityControl();
+        //configVelocityControl();
 
     }
 
@@ -79,6 +79,10 @@ public class Launcher{
         //Instantiates the encoder as the encoder plugged into the master
         m_encoder = new SensorCollection(m_masterMotor);
 
+        //Sets motor inversion
+        m_farSlaveMotor1.setInverted(RobotMap.LAUNCHER_FAR_SLAVE_1_INVERTED);
+        m_farSlaveMotor2.setInverted(RobotMap.LAUNCHER_FAR_SLAVE_2_INVERTED);
+
     }
 
     /**
@@ -89,18 +93,6 @@ public class Launcher{
         m_closeSlaveMotor.follow(m_masterMotor, FollowerType.PercentOutput);
         m_farSlaveMotor1.follow(m_masterMotor, FollowerType.PercentOutput);
         m_farSlaveMotor2.follow(m_masterMotor, FollowerType.PercentOutput);
-    }
-    public void setMotor1(double speed){
-        m_farSlaveMotor1.set(ControlMode.PercentOutput, speed);
-    }
-    public void setMotor2(double speed){
-        m_farSlaveMotor2.set(ControlMode.PercentOutput, speed);
-    }
-
-    public void getMotorInversion(){
-        System.out.println("close: " + m_closeSlaveMotor.getInverted());
-        System.out.println("Far1: " + m_farSlaveMotor1.getInverted());
-        System.out.println("Far2: " + m_farSlaveMotor2.getInverted());
     }
 
     /**
@@ -133,12 +125,10 @@ public class Launcher{
            setSpeed(0.0);
         }
         else if (m_state == State.kSetup) {
-            //setSpeed(RobotMap.LAUNCHER_SETUP_SPEED);
-            setMotor1(0.3);
+            setSpeed(RobotMap.LAUNCHER_SETUP_SPEED);
         }
         else if (m_state == State.kLaunch){
-           // setSpeed(RobotMap.LAUNCHER_FIRING_SPEED);
-           setMotor2(0.3);
+            setSpeed(RobotMap.LAUNCHER_FIRING_SPEED);
         }
     }
     private void configVelocityControl() {
