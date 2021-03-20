@@ -129,11 +129,20 @@ public class PilotController {
  
         //adjust our input based on our deadband
         turnInput = adjustForDeadband(turnInput);
- 
-        //multiplies our input by our current scalar
-        //commented out squared inputs per previous pilot's request, may still change to current pilot's preference
-        velocityInput *= m_currentVelocityScalar;// * Math.abs(velocityInput);
-        turnInput *= m_currentTurnScalar;// * Math.abs(turnInput);
+
+        //halfs speed when A button is held
+        if(m_controller.getAButtonPressed()){
+            //multiplies our input by our current scalar
+            //commented out squared inputs per previous pilot's request, may still change to current pilot's preference
+            velocityInput *= m_currentVelocityScalar/2;// * Math.abs(velocityInput);
+            turnInput *= m_currentTurnScalar/2;// * Math.abs(turnInput);
+        }
+        else{
+            //multiplies our input by our current scalar
+            //commented out squared inputs per previous pilot's request, may still change to current pilot's preference
+            velocityInput *= m_currentVelocityScalar;// * Math.abs(velocityInput);
+            turnInput *= m_currentTurnScalar;// * Math.abs(turnInput);
+        }
  
         //run our drivetrain with the adjusted input
         m_drivetrain.arcadeDrive(velocityInput, turnInput);
