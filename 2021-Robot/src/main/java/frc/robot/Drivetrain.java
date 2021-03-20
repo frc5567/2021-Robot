@@ -15,8 +15,6 @@ package frc.robot;
     import com.ctre.phoenix.motorcontrol.NeutralMode;
     import com.ctre.phoenix.motorcontrol.SensorCollection;
 
-    import edu.wpi.first.wpilibj.SerialPort;
-
 /**
  * The drivetrain has four motors, and has two speeds for our robot
  */
@@ -85,7 +83,7 @@ public class Drivetrain {
         m_rightDriveEncoder = new SensorCollection(m_masterRightMotor);
 
         // Set gears initially to unknown, so gears can be switch to high or low at first
-        m_gear = Gear.kUnknown;
+        m_gear = Gear.kLowGear;
 
         // Instantiates the NavX Gyro
         m_gyro = new NavX(SerialPort.Port.kMXP);
