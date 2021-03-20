@@ -117,10 +117,10 @@ public class Launcher{
            setSpeed(0.0);
         }
         else if (m_state == State.kSetup) {
-            setSpeed(0.5);
+            setSpeed(RobotMap.LAUNCHER_SETUP_SPEED);
         }
         else if (m_state == State.kLaunch){
-            setVelocity(0.8);
+            setSpeed(RobotMap.LAUNCHER_FIRING_SPEED);
         }
     }
     private void configVelocityControl() {

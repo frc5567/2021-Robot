@@ -28,6 +28,18 @@ public class Robot extends TimedRobot {
   /** The auton class that runs our auton */
   private Auton m_auton;
 
+  private Magazine m_magazine;
+  //Declare our limelight reader object
+  //LimelightReader m_limelightReader;
+
+  //Declare private variables for creating a camera tab, and putting up variables to test for angles and distance
+  //This tab is exclusively for testing, but could still be moved into limelight targeting test mode
+  private ShuffleboardTab m_cameraTab;
+  private NetworkTableEntry m_cameraHeight;
+  private NetworkTableEntry m_cameraAngle;
+  private NetworkTableEntry m_targetHeight;
+  private NetworkTableEntry m_distance;
+
 
   public Robot(){
    // m_limelightReader = new LimelightReader();

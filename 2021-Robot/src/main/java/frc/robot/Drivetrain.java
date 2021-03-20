@@ -15,6 +15,8 @@ package frc.robot;
     import com.ctre.phoenix.motorcontrol.NeutralMode;
     import com.ctre.phoenix.motorcontrol.SensorCollection;
 
+    import edu.wpi.first.wpilibj.SerialPort;
+
 /**
  * The drivetrain has four motors, and has two speeds for our robot
  */
@@ -137,8 +139,8 @@ public class Drivetrain {
      * @param turnInput
      */
     public void arcadeDrive(double forward, double turn){
-        m_masterLeftMotor.set(ControlMode.PercentOutput, forward, DemandType.ArbitraryFeedForward, +turn);
-        m_masterRightMotor.set(ControlMode.PercentOutput, forward, DemandType.ArbitraryFeedForward, -turn);
+        m_masterLeftMotor.set(ControlMode.PercentOutput, forward, DemandType.ArbitraryFeedForward, turn);
+        m_masterRightMotor.set(ControlMode.PercentOutput, -forward, DemandType.ArbitraryFeedForward, turn);
         m_slaveLeftMotor.follow(m_masterLeftMotor);
         m_slaveRightMotor.follow(m_masterRightMotor);
     }
