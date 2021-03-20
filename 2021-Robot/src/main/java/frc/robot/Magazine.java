@@ -1,8 +1,6 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.SensorCollection;
-import com.ctre.phoenix.motorcontrol.can.BaseMotorController;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;  
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -22,17 +20,7 @@ public class Magazine {
      * @param intakeSensor The sensor mounted near the input to index our balls
      * @param launchSensor The sensor mounted near the launchers to tick our count in the magazine down
      */
-    public Magazine(VictorSPX motor, DigitalInput intakeSensor, DigitalInput launchSensor) {
-        m_motor = motor;
-
-        m_intakeSensor = intakeSensor;
-        m_launchSensor = launchSensor;
-    } 
-
-    /**
-     * Vertical constuctor for instantiation
-     */
-    public Magazine(){
+     public Magazine(){
         m_motor = new VictorSPX(RobotMap.MAGAZINE_MOTOR_PORT);
 
         m_intakeSensor = new DigitalInput(RobotMap.MAGAZINE_IN_SENSOR_PORT);
