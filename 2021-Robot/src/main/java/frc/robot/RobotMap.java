@@ -85,7 +85,7 @@ public class RobotMap {
     public static final int INTAKE_VICTOR_ID = 16;
 
     //the PWM port for the outer motor - this is on PWM to reduce CAN traffic
-    public static final int INTAKE_PWM_SPARK_PORT = 2;
+    public static final int INTAKE_OUTER_MOTOR_PORT = 2;
     public static final int INTAKE_INNER_MOTOR_PORT = 1;
 
     //inversion for our intake motors

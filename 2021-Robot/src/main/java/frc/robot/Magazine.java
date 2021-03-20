@@ -1,8 +1,6 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.SensorCollection;
-import com.ctre.phoenix.motorcontrol.can.BaseMotorController;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;  
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -28,16 +26,6 @@ public class Magazine {
         m_intakeSensor = intakeSensor;
         m_launchSensor = launchSensor;
     } 
-
-    /**
-     * Vertical constuctor for instantiation
-     */
-    public Magazine(){
-        m_motor = new VictorSPX(RobotMap.MAGAZINE_MOTOR_PORT);
-
-        m_intakeSensor = new DigitalInput(RobotMap.MAGAZINE_IN_SENSOR_PORT);
-        m_launchSensor = new DigitalInput(RobotMap.MAGAZINE_OUT_SENSOR_PORT);
-    }
 
     /**
      * Sets the magazine to run based on on a set motor speed

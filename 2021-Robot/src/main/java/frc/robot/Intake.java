@@ -67,7 +67,7 @@ public class Intake {
     Position m_position;
 
     /**
-     * Vertical constructor for the intake
+     * constructor for intake
      * Uses robot map constants for instantation
      * 
      * @param outerIntakeMotor A default motor controller for running the intake
@@ -76,7 +76,7 @@ public class Intake {
      */
     public Intake() {
         //the motors are currently set to operate over PWM to reduce can bus traffic
-        m_outerMotor = new VictorSP(RobotMap.INTAKE_PWM_SPARK_PORT);
+        m_outerMotor = new VictorSP(RobotMap.INTAKE_OUTER_MOTOR_PORT);
         m_innerMotor = new Talon(RobotMap.INTAKE_INNER_MOTOR_PORT);
 
         //set inversions to match our physical intuition of forward being into the robot
