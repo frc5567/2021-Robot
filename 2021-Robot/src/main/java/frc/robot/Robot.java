@@ -4,15 +4,9 @@
 
 package frc.robot;
 
-import java.util.Map;
-
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 
-import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
-import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
-import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import frc.robot.PilotController.DriveType;
 
 
@@ -45,6 +39,7 @@ public class Robot extends TimedRobot {
   private NetworkTableEntry m_cameraAngle;
   private NetworkTableEntry m_targetHeight;
   private NetworkTableEntry m_distance;
+
 
   public Robot(){
    // m_limelightReader = new LimelightReader();
@@ -135,26 +130,6 @@ public class Robot extends TimedRobot {
   }
 
   public void shuffleboardConfig(){
-    //creates a tab on the shuffleboard for the camera
-    m_cameraTab = Shuffleboard.getTab("Camera");
-
-    //Creates editable text fields to set camera height, fixd angle, and target height
-    m_cameraHeight = m_cameraTab.addPersistent("Camera Height (m)", 0.0)
-                                .withProperties(Map.of("min", 0.0, "max", 6.0))
-                                .withWidget(BuiltInWidgets.kTextView)
-                                .getEntry();
-    m_cameraAngle = m_cameraTab.addPersistent("Camera Angle (deg)", 0.0)
-                                .withWidget(BuiltInWidgets.kTextView)
-                                .withProperties(Map.of("min", 0.0, "max", 90.0))
-                                .getEntry();
-    m_targetHeight = m_cameraTab.addPersistent("Target Height (m)", 0.0)
-                                .withWidget(BuiltInWidgets.kTextView)
-                                .withProperties(Map.of("min", 0.0, "max", 6.0))
-                                .getEntry();
-
-    //Creates a field to display calculated distance
-    m_distance = m_cameraTab.addPersistent("Distance", 0.0)
-                            .getEntry();
 
   }
 }
