@@ -73,21 +73,6 @@ public class PilotController {
     private double m_currentVelocityScalar = RobotMap.DRIVE_DEFAULT_INPUT_SCALAR;
     private double m_currentTurnScalar = RobotMap.DRIVE_DEFAULT_INPUT_SCALAR;
  
-    /**
-     * Creates an object to allow the pilot to control the drivetrain
-     * 
-     * @param controller The pilot controller to control the drive train with
-     * @param drivetrain The robot drivetrain
-     * @param driveType The type of drive control that the pilot wants (tank or arcade)
-     */
-    public PilotController(XboxController controller, Drivetrain drivetrain, DriveType driveType) {
-        m_controller = controller;
-        m_drivetrain = drivetrain;
-        m_driveType = driveType;
- 
-        //puts input scalar widgets on the shuffleboard
-        shuffleboardConfig();
-    }
  
      /**
      * Creates an object to allow the pilot to control the drivetrain
