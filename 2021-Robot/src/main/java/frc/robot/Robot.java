@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import frc.robot.PilotController.DriveType;
 
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
  * each mode, as described in the TimedRobot documentation. If you change the name of this class or
@@ -29,16 +30,17 @@ public class Robot extends TimedRobot {
   private Auton m_auton;
 
   private Magazine m_magazine;
+  private Launcher m_launcher;
   //Declare our limelight reader object
   //LimelightReader m_limelightReader;
 
-  //Declare private variables for creating a camera tab, and putting up variables to test for angles and distance
-  //This tab is exclusively for testing, but could still be moved into limelight targeting test mode
-  private ShuffleboardTab m_cameraTab;
-  private NetworkTableEntry m_cameraHeight;
-  private NetworkTableEntry m_cameraAngle;
-  private NetworkTableEntry m_targetHeight;
-  private NetworkTableEntry m_distance;
+  // //Declare private variables for creating a camera tab, and putting up variables to test for angles and distance
+  // //This tab is exclusively for testing, but could still be moved into limelight targeting test mode
+  // private ShuffleboardTab m_cameraTab;
+  // private NetworkTableEntry m_cameraHeight;
+  // private NetworkTableEntry m_cameraAngle;
+  // private NetworkTableEntry m_targetHeight;
+  // private NetworkTableEntry m_distance;
 
 
   public Robot(){

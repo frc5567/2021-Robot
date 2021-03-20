@@ -55,6 +55,10 @@ public class Launcher{
         m_farSlaveMotor1 = farSlaveMotor1;
         m_farSlaveMotor2 = farSlaveMotor2;
 
+        //Sets motor inversion
+        m_farSlaveMotor1.setInverted(RobotMap.LAUNCHER_FAR_SLAVE_1_INVERTED);
+        m_farSlaveMotor2.setInverted(RobotMap.LAUNCHER_FAR_SLAVE_2_INVERTED);
+
         //Set the initial state to Idle
         setState(State.kIdle);
 
@@ -85,6 +89,18 @@ public class Launcher{
         m_closeSlaveMotor.follow(m_masterMotor, FollowerType.PercentOutput);
         m_farSlaveMotor1.follow(m_masterMotor, FollowerType.PercentOutput);
         m_farSlaveMotor2.follow(m_masterMotor, FollowerType.PercentOutput);
+    }
+    public void setMotor1(double speed){
+        m_farSlaveMotor1.set(ControlMode.PercentOutput, speed);
+    }
+    public void setMotor2(double speed){
+        m_farSlaveMotor2.set(ControlMode.PercentOutput, speed);
+    }
+
+    public void getMotorInversion(){
+        System.out.println("close: " + m_closeSlaveMotor.getInverted());
+        System.out.println("Far1: " + m_farSlaveMotor1.getInverted());
+        System.out.println("Far2: " + m_farSlaveMotor2.getInverted());
     }
 
     /**
@@ -117,10 +133,12 @@ public class Launcher{
            setSpeed(0.0);
         }
         else if (m_state == State.kSetup) {
-            setSpeed(RobotMap.LAUNCHER_SETUP_SPEED);
+            //setSpeed(RobotMap.LAUNCHER_SETUP_SPEED);
+            setMotor1(0.3);
         }
         else if (m_state == State.kLaunch){
-            setSpeed(RobotMap.LAUNCHER_FIRING_SPEED);
+           // setSpeed(RobotMap.LAUNCHER_FIRING_SPEED);
+           setMotor2(0.3);
         }
     }
     private void configVelocityControl() {

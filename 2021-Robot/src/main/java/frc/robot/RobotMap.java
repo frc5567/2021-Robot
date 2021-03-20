@@ -39,6 +39,11 @@ public class RobotMap {
     public static final int FAR_LAUNCHER_SLAVE1_ID = 23;
     public static final int FAR_LAUNCHER_SLAVE2_ID = 24;
 
+    //Motor inversion
+    public static final boolean LAUNCHER_FAR_SLAVE_1_INVERTED = true;
+    public static final boolean LAUNCHER_FAR_SLAVE_2_INVERTED = false;
+
+
     //launcher PID constants for velocity control
     public static final double LAUNCHER_P = 0.1;//1
     public static final double LAUNCHER_I = 0;
@@ -77,7 +82,7 @@ public class RobotMap {
 
     public static final double LAUNCHER_SETUP_SPEED = 0.5;
 
-    public static final double LAUNCHER_FIRING_SPEED = 0.9;
+    public static final double LAUNCHER_FIRING_SPEED = 0.7;
     
     /**
      * Intake Constants
@@ -126,7 +131,7 @@ public class RobotMap {
     public static final double RPM_TO_UNITS_PER_100MS = 2048.0 / 600;
 
     public static final double LAUNCHER_HOLDING_SPEED = 0.5; //original 0.5
-    public static final double MAGAZINE_LAUNCH_SPEED = 0.4; //original 0.65
+    public static final double MAGAZINE_LAUNCH_SPEED = 0.3; //original 0.65
     public static final double MAGAZINE_DUMP_SPEED = -0.45; //original -0.45
     public static final double MAGAZINE_INTAKE_SPEED = 0.4; //original 0.65
 

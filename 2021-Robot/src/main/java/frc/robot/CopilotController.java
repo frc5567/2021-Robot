@@ -80,7 +80,7 @@ public class CopilotController{
            // m_magazine.RunMagazine(RobotMap.MAGAZINE_LAUNCH_SPEED);
             
             m_launcher.setState(State.kLaunch);
-            System.out.println(m_launcher.toString());
+            //System.out.println(m_launcher.toString());
         }
         /**
          * This code was commented out on saturday(3/12) due to it being non functional
@@ -125,6 +125,7 @@ public class CopilotController{
             PilotController.is_currently_targeting = false;
         }
         else if(m_gamePad.getRevLauncherPressed()) {
+            m_launcher.getMotorInversion();
             m_launcher.setState(State.kSetup);
             m_drivetrain.shiftGear(Gear.kLowGear);
         }
