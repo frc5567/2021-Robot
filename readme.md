@@ -1,6 +1,6 @@
 # Code Red Robotics Team 5567 The First Responders 
 
-## 2020 Robot Code
+## 2021 Robot Code
 
 ### Code standard naming convention notes:
 * Member variables should be pre-pended with m_ and utilize camelCasing
@@ -41,7 +41,7 @@
 | Climber Deploy | 775 Pro       | Talon SRX   |    1    | On Climber | 27
 | Climber Winch  | Neo           | Spark Max   |    1    | Belly Pan  | N/A: PWM 1
 
-##LimelightPipelines
+## LimelightPipelines
 * This folder contains pipelines used on the Limelight. 
 * If any changes are made to those pipelines, those changes should be put in this folder to pull into master
 * The Driver p3 and StandardZoom p0 pipelines are the pipelines currently used in the code
