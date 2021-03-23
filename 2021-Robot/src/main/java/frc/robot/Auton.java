@@ -96,7 +96,7 @@ public class Auton{
         m_drivetrain.zeroEncoders();
         m_drivetrain.zeroGyro();
         m_type = AutonType.kBarrel;
-        m_step = AutonStep.kStep2;
+        m_step = AutonStep.kStep1;
     }
 
     /**
@@ -113,8 +113,7 @@ public class Auton{
             if(m_step == AutonStep.kStep1){
 
                 if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 120)){
-                    m_step = AutonStep.kStop;
-                   // m_step = AutonStep.kStep2;
+                   m_step = AutonStep.kStep2;
                 }
 
                 else{
@@ -126,8 +125,7 @@ public class Auton{
             else if(m_step == AutonStep.kStep2){
                 
                 if(turnToAngle(RobotMap.CLOCKWISE_SPEED, 45)){
-                    m_step = AutonStep.kStop;
-                    //m_step = AutonStep.kStep3;
+                    m_step = AutonStep.kStep3;
                 }
 
                 else{
@@ -775,6 +773,7 @@ public class Auton{
             else{
                 m_drivetrain.arcadeDrive(0, 0);
                 m_drivetrain.zeroEncoders();
+                m_drivetrain.zeroGyro();
                 return true;
             }
             
@@ -789,6 +788,7 @@ public class Auton{
             else{
                 m_drivetrain.arcadeDrive(0, 0);
                 m_drivetrain.zeroEncoders();
+                m_drivetrain.zeroGyro();
                 return true;
             }
             
@@ -816,6 +816,7 @@ public class Auton{
         if((currentAngle < (target * (1 + RobotMap.ROTATE_BOUND))) && (currentAngle > (target * (1 - RobotMap.ROTATE_BOUND)))){
             m_drivetrain.arcadeDrive(0, 0);
             m_drivetrain.zeroGyro();
+            m_drivetrain.zeroEncoders();
             System.out.println("At Target angle" + currentAngle);
             return true;
         }
