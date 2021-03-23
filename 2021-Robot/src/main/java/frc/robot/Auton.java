@@ -96,7 +96,7 @@ public class Auton{
         m_drivetrain.zeroEncoders();
         m_drivetrain.zeroGyro();
         m_type = AutonType.kBarrel;
-        m_step = AutonStep.kStep1;
+        m_step = AutonStep.kStep2;
     }
 
     /**
@@ -113,7 +113,8 @@ public class Auton{
             if(m_step == AutonStep.kStep1){
 
                 if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 120)){
-                    m_step = AutonStep.kStep2;
+                    m_step = AutonStep.kStop;
+                   // m_step = AutonStep.kStep2;
                 }
 
                 else{
@@ -125,7 +126,8 @@ public class Auton{
             else if(m_step == AutonStep.kStep2){
                 
                 if(turnToAngle(RobotMap.CLOCKWISE_SPEED, 45)){
-                    m_step = AutonStep.kStep3;
+                    m_step = AutonStep.kStop;
+                    //m_step = AutonStep.kStep3;
                 }
 
                 else{
@@ -810,14 +812,17 @@ public class Auton{
         double currentAngle = m_drivetrain.getGyro();
         System.out.println("Target Angle: " + target);
         System.out.println("Current Angle: " + currentAngle);
-        if((m_drivetrain.getGyro() < (target * (1 + RobotMap.ROTATE_BOUND))) && (m_drivetrain.getGyro() > (target * (1 - RobotMap.ROTATE_BOUND)))){
-            m_drivetrain.arcadeDrive(0, speed);
-            return false;
-        }
-        else{
+        // if our angle is less than the upper bound (target angle times the rotate bound) and our angle is more than the lower bound  
+        if((currentAngle < (target * (1 + RobotMap.ROTATE_BOUND))) && (currentAngle > (target * (1 - RobotMap.ROTATE_BOUND)))){
             m_drivetrain.arcadeDrive(0, 0);
             m_drivetrain.zeroGyro();
+            System.out.println("At Target angle" + currentAngle);
             return true;
+        }
+        else{
+            m_drivetrain.arcadeDrive(0, speed);
+            System.out.println("Not at Target angle" + currentAngle);
+            return false;
         }
 
     }
