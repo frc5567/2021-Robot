@@ -69,7 +69,8 @@ public class PilotController {
     private ShuffleboardTab m_driverTab;
  
     //these variables allow us to reduce the amount of logic on every cycle
-    //we set this value everytime we switch gears
+    /*we set this value every time we switch gears because we use a different setting for high and low
+     *and it's less logic than using an if else statement*/
     private double m_currentVelocityScalar = RobotMap.DRIVE_DEFAULT_INPUT_SCALAR;
     private double m_currentTurnScalar = RobotMap.DRIVE_DEFAULT_INPUT_SCALAR;
  
