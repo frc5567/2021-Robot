@@ -132,19 +132,6 @@ public class RobotMap {
 
     public static final double INNER_INTAKE_SPEED = 0.3;
     public static final double OUTER_INTAKE_SPEED = 0.8;
-
-    /** A storage class to put all of the gamepad button IDs in the same spot */
-    static final class GAMEPAD_BUTTON_ID
-    {
-		public static final int MOVE_MAGAZINE_DOWN = 4;
-		public static final int MOVE_MAGAZINE_LAUNCH = 5;
-		public static final int LAUNCHER_AND_MAGAZINE = 7;
-		public static final int REV_LAUNCHER = 6;
-		public static final int ENABLE_INTAKE = 8;
-		public static final int DISABLE_INTAKE = 9;
-		public static final int DUMP_BALLS = 12;
-    }   
-
     
     /**
      * General Constants
