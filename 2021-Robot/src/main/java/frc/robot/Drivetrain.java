@@ -82,9 +82,8 @@ public class Drivetrain {
         m_leftDriveEncoder = new SensorCollection(m_masterLeftMotor);
         m_rightDriveEncoder = new SensorCollection(m_masterRightMotor);
 
-        // Set gears initially to unknown, and then shifts the Gear so the robot always starts in low gear
+        // Set gears initially to unknown
         m_gear = Gear.kUnknown;
-        shiftGear(Gear.kLowGear);
 
         // Instantiates the NavX Gyro
         m_gyro = new NavX(SerialPort.Port.kMXP);

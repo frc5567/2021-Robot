@@ -7,6 +7,7 @@ package frc.robot;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import frc.robot.Drivetrain.Gear;
 import frc.robot.PilotController.DriveType;
 
 
@@ -30,6 +31,8 @@ public class Robot extends TimedRobot {
 
   private Magazine m_magazine;
 
+  private Drivetrain m_drivetrain;
+
   public Robot(){
    // m_limelightReader = new LimelightReader();
     //instantiates our PilotController, which controls all systems on the drivetrain
@@ -41,6 +44,7 @@ public class Robot extends TimedRobot {
     //instantiates the auton
     m_auton = new Auton(m_pilotController.getDrivetrain());
 
+    m_drivetrain = new Drivetrain();
     //Sets up our camera testing tab
     shuffleboardConfig();
 
@@ -53,7 +57,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-
+    m_drivetrain.shiftGear(Gear.kLowGear);
   }
 
   @Override
