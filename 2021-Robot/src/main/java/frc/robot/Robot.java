@@ -31,7 +31,6 @@ public class Robot extends TimedRobot {
 
   private Magazine m_magazine;
 
-  private Drivetrain m_drivetrain;
 
   public Robot(){
    // m_limelightReader = new LimelightReader();
@@ -44,7 +43,6 @@ public class Robot extends TimedRobot {
     //instantiates the auton
     m_auton = new Auton(m_pilotController.getDrivetrain());
 
-    m_drivetrain = new Drivetrain();
     //Sets up our camera testing tab
     shuffleboardConfig();
 
@@ -57,7 +55,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    m_drivetrain.shiftGear(Gear.kLowGear);
+    m_pilotController.getDrivetrain().shiftGear(Gear.kLowGear);
   }
 
   @Override
