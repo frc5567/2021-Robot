@@ -25,8 +25,9 @@ public class RobotMap {
     /** The timeout constant for the CTRE config methods in miliseconds */
     public static final int TIMEOUT_MS = 10;
 
-
-    public static final double INCHES_TO_ENCODER_TICKS = 4096 / 18.85;
+    //the wheel circumference is 18.85, the low gear drive ratio is 15:1 
+    public static final double INCHES_TO_ENCODER_TICKS_LOWGEAR = 2048 / (18.85 / 15);
+    public static final double INCHES_TO_ENCODER_TICKS_HIGHGEAR = 2048 / (18.85 / 7.92);
     //the total number of encoder ticks in a rotate----TODO: Check to see if this is the correct number
     public static final double STARTING_TICK_VALUE = 1440;
 
@@ -174,6 +175,6 @@ public class RobotMap {
 
     public static final double COUNTER_CLOCKWISE_SPEED = -0.25;
 
-    public static final double ROTATE_BOUND = 0.05;
+    public static final double ROTATE_BOUND = 0.1;
 
 }

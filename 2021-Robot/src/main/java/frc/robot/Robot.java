@@ -79,7 +79,6 @@ public class Robot extends TimedRobot {
   public void autonomousInit() {
     //runs the init part of our auton
     m_auton.init();
-  
   }
 
   @Override

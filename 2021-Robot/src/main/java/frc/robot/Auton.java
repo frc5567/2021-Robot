@@ -1,5 +1,9 @@
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+
+import frc.robot.Drivetrain.Gear;
+
 public class Auton{
 
     /**
@@ -95,6 +99,8 @@ public class Auton{
     public void init(){
         m_drivetrain.zeroEncoders();
         m_drivetrain.zeroGyro();
+        m_drivetrain.setNeutralMode(NeutralMode.Brake);
+        m_drivetrain.shiftGear(Gear.kLowGear);
         m_type = AutonType.kBarrel;
         m_step = AutonStep.kStep1;
     }
@@ -124,7 +130,7 @@ public class Auton{
             //Rotates Clockwise 45 degrees
             else if(m_step == AutonStep.kStep2){
                 
-                if(turnToAngle(RobotMap.CLOCKWISE_SPEED, 45)){
+                if(turnToAngle(RobotMap.CLOCKWISE_SPEED, 55)){
                     m_step = AutonStep.kStep3;
                 }
 
@@ -184,7 +190,7 @@ public class Auton{
             //Drives forward for 40 inches
             else if(m_step == AutonStep.kStep7){
 
-                if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 40)){
+                if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 30)){
                     m_step = AutonStep.kStep8;
                 }
 
@@ -196,7 +202,7 @@ public class Auton{
             //Rotates Clockwise 50 degrees
             else if(m_step == AutonStep.kStep8){
 
-                if(turnToAngle(RobotMap.CLOCKWISE_SPEED, 50)){
+                if(turnToAngle(RobotMap.CLOCKWISE_SPEED, 20)){
                     m_step = AutonStep.kStep9;
                 }
 
@@ -208,7 +214,7 @@ public class Auton{
             //Drives forward for 160 inches
             else if(m_step == AutonStep.kStep9){
 
-                if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 160)){
+                if(driveToTarget(RobotMap.FORWARD_DRIVE_SPEED, 120)){
                     m_step = AutonStep.kStep10;
                 }
 
@@ -759,7 +765,7 @@ public class Auton{
     public boolean driveToTarget(double speed, double target){
         double rightEncoder = m_drivetrain.getRightDriveEncoderPosition();
         double leftEncoder = m_drivetrain.getLeftDriveEncoderPosition();
-        target = target * RobotMap.INCHES_TO_ENCODER_TICKS;
+        target = target * RobotMap.INCHES_TO_ENCODER_TICKS_LOWGEAR;
         System.out.println("EncoderTarget: " + target);
         System.out.println("Right Encoder Ticks: " + rightEncoder);
         System.out.println("Left Encoder Ticks: " + leftEncoder);
