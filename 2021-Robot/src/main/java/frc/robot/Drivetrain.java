@@ -111,7 +111,9 @@ public class Drivetrain {
     }
 
     public void zeroGyro(){
+        m_gyro.enableLogging(true);
         m_gyro.zeroYaw();
+        m_gyro.enableLogging(false);
     }
 
     /**
