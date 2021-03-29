@@ -169,11 +169,17 @@ public class RobotMap {
      */
     public static final double FORWARD_DRIVE_SPEED = 0.25;
 
+    public static final double FAST_FORWARD_DRIVE_SPEED = 0.5;
+
     public static final double BACKWARD_DRIVE_SPEED = -0.25;
 
     public static final double CLOCKWISE_SPEED = 0.25;
 
+    public static final double FAST_CLOCKWISE_SPEED = 0.35;
+
     public static final double COUNTER_CLOCKWISE_SPEED = -0.25;
+
+    public static final double FAST_COUNTER_CLOCKWISE_SPEED = -0.35;
 
     public static final double ROTATE_BOUND = 0.1;
 
